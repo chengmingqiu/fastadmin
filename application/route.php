@@ -45,3 +45,6 @@ Route::get('getBraA','api/AppHomePage/GetBra');
 Route::get('getProA','api/AppHomePage/GetPro');
 Route::get('getBrStoA','api/AppHomePage/GetBrSto');
 Route::get('getSeriA','api/AppHomePage/GetSeri');
+
+//系列列表
+Route::get('getserLiA','api/AppSeries/SeriesList');
