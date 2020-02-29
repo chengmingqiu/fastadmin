@@ -12,6 +12,7 @@ return [
 
 
         //app
-        'app\api\controller\AppHomePage'
+        'app\api\controller\AppHomePage',
+        'app\api\controller\AppSeries',
     ],
 ];

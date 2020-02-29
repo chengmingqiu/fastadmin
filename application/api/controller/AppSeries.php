@@ -10,7 +10,7 @@ use app\api\model\SeriesBrand;
 use think\Request;
 /**
  * Class Series
- * @title 系列类
+ * @title APP官网---》系列类
  * @package app\api\controller\Series
  */
 
