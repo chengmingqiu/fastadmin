@@ -79,9 +79,8 @@ class AppHomePage  extends  Api
      * @return {"name":"msg","type":"string","required":true,"desc":"成功","level": 1}
      * @return {"name":"time","type":"int","required":true,"desc":"返回时间戳","level": 1}
      * @return {"name":"data","type":"array","required":true,"desc":"数据data","level": 1}
-     * @return {"name":"id","type":"int","required":true,"desc":"商品ID","level": 2}
-     * @return {"name":"image","type":"string","required":true,"desc":"商品图","level": 2}
-     * @return {"name":"series_id","type":"int","required":true,"desc":"系列ID","level": 2}
+     * @return {"name":"id","type":"int","required":true,"desc":"故事ID","level": 2}
+     * @return {"name":"image","type":"string","required":true,"desc":"故事图","level": 2}
      */
     public function GetBrSto()
     {
