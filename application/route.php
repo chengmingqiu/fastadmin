@@ -41,7 +41,7 @@ Route::post('getproSe','api/Product/ProductSear');
 * App端
 */
 //首页接口
-Route::get('getBraA','api/APPHomePage/GetBra');
-Route::get('getProA','api/APPHomePage/GetPro');
-Route::get('getBrStoA','api/APPHomePage/GetBrSto');
-Route::get('getSeriA','api/APPHomePage/GetSeri');
+Route::get('getBraA','api/AppHomePage/GetBra');
+Route::get('getProA','api/AppHomePage/GetPro');
+Route::get('getBrStoA','api/AppHomePage/GetBrSto');
+Route::get('getSeriA','api/AppHomePage/GetSeri');

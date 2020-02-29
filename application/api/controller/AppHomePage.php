@@ -14,7 +14,7 @@ use app\api\model\SeriesBrand;
  * @package app\api\controller\HomePage
  */
 
-class APPHomePage  extends  Api
+class AppHomePage  extends  Api
 {
 	/**
      * @var int HTTP 状态码

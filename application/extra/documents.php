@@ -12,6 +12,6 @@ return [
 
 
         //app
-        'app\api\controller\APPHomePage'
+        'app\api\controller\AppHomePage'
     ],
 ];
