@@ -1,0 +1,132 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2"  ></label>
+        <div class="col-xs-12 col-sm-8" style="margin-left: 10px; ;width:135px; height:37px;background:url('/assets/img/tishi.png');">
+          <font color="CC6666" ><li style="font-size: 2;margin-top: 10px;">修改基本信息</li></font></div>
+        <div class="col-xs-12 col-sm-8" >
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('名称')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-name" data-rule="required" class="form-control" name="row[name]" type="text" value="{$row.name|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('简介')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-brief" data-rule="required" class="form-control" name="row[brief]" type="text" value="{$row.brief|htmlentities}">
+        </div>
+    </div>
+    <!-- <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('类型')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:Form::selectpicker('row[type]', $prtype, $row.type, ['data-rule'=>'required'])}
+        </div>
+    </div> -->
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('规格')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:Form::fieldlist('row[specs]', $row.specs, null, '', ['data-rule'=>'required'])}
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="form-inline" data-toggle="cxselect" data-selects="first,second">
+            <label class="control-label col-xs-12 col-sm-2">{:__('选择系列')}:</label>
+            <div class="col-xs-12 col-sm-8">
+                <select class="first form-control" name="row[big_type]" data-url="product/product/ajax">
+                    <option value="{$row.big_type|htmlentities}" selected="">请选择</option>
+                </select>
+                <select class="second form-control" name="row[small_type]" data-url="product/product/ajax"   data-query-name="id">
+                    <option value="0" selected=""></option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('封面')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-image" class="form-control" size="50" name="row[image]" type="text" value="{$row.image|htmlentities}">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="plupload-image" class="btn btn-danger plupload" data-input-id="c-image" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-preview-id="p-image"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-image" class="btn btn-primary fachoose" data-input-id="c-image" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-image"></span>
+            </div>
+            <ul class="row list-inline plupload-preview" id="p-image"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('详情图(多):')}</label>
+        <div class="col-xs-12 col-sm-8">
+            {:Form::images('row[details_image]', $row.details_image, ['data-rule'=>'required'])}
+        </div>
+    </div>
+   <!--  <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('关联系列')}:</label>
+        <div class="col-xs-12 col-sm-8">
+                {:Form::select('row[series_id]',  $series , $row.series_id, ['data-rule'=>'required'])}
+        </div>
+    </div> -->
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2"  ></label>
+        <div class="col-xs-12 col-sm-8" style="margin-left: 10px; ;width:135px; height:37px;background:url('/assets/img/tishi.png');">
+          <font color="CC6666" ><li style="font-size: 2;margin-top: 10px;">修改简介图</li></font></div>
+        <div class="col-xs-12 col-sm-8" >
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('简介图(多):')}</label>
+        <div class="col-xs-12 col-sm-8">
+            {:Form::images('row[brief_image]', $row.brief_image,['data-rule'=>'required'])}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2"  ></label>
+        <div class="col-xs-12 col-sm-8" style="margin-left: 10px; ;width:135px; height:37px;background:url('/assets/img/tishi.png');">
+          <font color="CC6666" ><li style="font-size: 2;margin-top: 10px;">修改内容信息</li></font></div>
+        <div class="col-xs-12 col-sm-8" >
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('内容规格')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:Form::fieldlist('row[goods_specs]', $row.goods_specs, null, '', ['data-rule'=>'required'])}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('内容名称')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-name" data-rule="required" class="form-control" name="row[con_title]" type="text" value="{$row.con_title|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('内容图（3张）:')}</label>
+        <div class="col-xs-12 col-sm-8">
+            {:Form::images('row[con_image]', $row.con_image, ['data-rule'=>'required'])}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('内容')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:Form::textarea('row[con]', $row.con, ['data-rule'=>'required'])}
+        </div>
+    </div>
+     <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('首页推荐商品：')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:build_radios('row[is_recom]', ['1'=>__('是'), '0'=>__('否')],$row.is_recom)}
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>
+<script type="text/javascript" src="/assets/js/ue/ueditor.config.js"></script>
+<script type="text/javascript" src="/assets/js/ue/ueditor.all.js"></script>
+<script type="text/javascript" src="/assets/js/ue/lang/zh-cn/zh-cn.js"></script>

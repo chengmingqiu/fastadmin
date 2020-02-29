@@ -1,0 +1,96 @@
+<?php
+
+namespace app\api\model;
+
+use think\Model;
+use think\Db;
+use think\Config;
+use fast\Tree;
+
+class Series extends Model
+{    
+    // 表名
+    protected $name = 'series';
+    
+    // 自动写入时间戳字段
+    protected $autoWriteTimestamp = false;
+
+    // 定义时间戳字段名
+    protected $createTime = true;
+    protected $updateTime = true;
+    protected $deleteTime = false;
+
+    // 追加属性
+    protected $append = [
+
+    ];
+
+    public function getSeries()
+    {
+      $series =   Db::table('be_series')->field(['id','title','content as  brief','image'])->order('update_time','desc')->limit(0,3)->select();
+      foreach ($series as $k => $v) {
+           $series[$k]['story_id'] = Db::table('be_series_brand')->field(['id'])->where(['s_id'=>$v['id']])->find()['id'];
+           $series[$k]['image'] = !empty($v['image']) ? explode(',', $v['image']) : '';
+           if(!empty($series[$k]['image']))
+           {
+            foreach ($series[$k]['image'] as $ke => $va) {
+                $series[$k]['image'][$ke] = Config('ip').$va;
+            }
+           }
+      }
+      return $series;
+    }
+
+    public function SeriesList()
+    {
+      $dataList  = [];
+      $dataChild = [];
+      $list = Db::table('be_series')->field(['id','type as title','pid'])->select();
+      $listdata = $this->digui($list);
+      foreach ($listdata as $k => $v) {
+          if(!empty($v['child'])){
+              $dataChild[] = $v;
+          }else{
+              $dataList[]  =  [
+                    'id'   => $v['id'],
+                    'title'=> $v['title'],
+                    'pid'  => $v['pid'],
+              ];
+          }
+      }
+      return ['list'=>$dataList,'list2'=>$dataChild];
+    }
+
+
+     function digui($arr,$pid=0){
+          $list = [];
+          foreach ($arr as $k => $v) {
+            if($v['pid'] == $pid){
+              $v['child'] = $this->digui($arr,$v['id']);
+              $list[] = $v; 
+            }
+          }
+          return $list;
+      }
+
+    /*
+    *新增app
+    */
+    public function getSeriesA()
+    {
+      $data = Db::table('be_series')
+              ->field(['id','title','image'])
+              ->order('update_time','desc')
+              ->limit(0,3)
+              ->select();
+      foreach ($data as $k => $v) {
+           $data[$k]['story_id'] = Db::table('be_series_brand')->field(['id'])->where(['s_id'=>$v['id']])->find()['id'];
+           if(!empty($data[$k]['image']))
+           {
+              $data[$k]['image'] = !empty($v['image']) ? explode(',', $v['image']) : '';
+              $data[$k]['image'] = Config('ip').$data[$k]['image'][0];
+           }
+      }
+       return $data;
+    }
+}
