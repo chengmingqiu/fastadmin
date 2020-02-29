@@ -48,3 +48,14 @@ Route::get('getSeriA','api/AppHomePage/GetSeri');
 
 //系列列表
 Route::get('getserLiA','api/AppSeries/SeriesList');
+Route::get('getsDatliA','api/AppSeries/SerDataLi');
+
+
+//产品接口
+Route::get('getproLiA','api/AppProduct/PorductList');
+Route::get('getproFiA','api/AppProduct/ProductFind');
+
+
+//故事接口
+Route::get('getserbLiA','api/AppSeriesBrand/SeriesBrandList');
+Route::get('getserbFiA','api/AppSeriesBrand/SeriesBrandFind');

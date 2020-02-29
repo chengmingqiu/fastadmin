@@ -17,7 +17,7 @@ use think\Request;
 class AppSeries  extends  Api
 {
 	/**
-     * @title 系列列表
+     * @title 系列分类列表
      * @desc  {"0":"/getserLiA","1":"请求方式：GET"}
      * @return {"name":"code","type":"int","required":true,"desc":"返回状态（1:成功返回，500:系统内部错误）","level": 1}
      * @return {"name":"msg","type":"string","required":true,"desc":"成功","level": 1}
@@ -42,4 +42,25 @@ class AppSeries  extends  Api
 		$SeriesList  = (new Ser_m())->SeriesList();
 		$this->success(__('成功'),$SeriesList);
 	}
+
+
+     /**
+     * @title 系列列表
+     * @desc  {"0":"/getsDatliA","1":"请求方式：GET"}
+     * @return {"name":"code","type":"int","required":true,"desc":"返回状态（1:成功返回，500:系统内部错误）","level": 1}
+     * @return {"name":"msg","type":"string","required":true,"desc":"成功","level": 1}
+     * @return {"name":"time","type":"int","required":true,"desc":"返回时间戳","level": 1}
+     * @return {"name":"data","type":"array","required":true,"desc":"数据data","level": 1}
+     * @return {"name":"image","type":"array","required":true,"desc":"图片","level": 2}
+     * @return {"name":"title","type":"array","required":true,"desc":"标题","level": 2}
+     * @return {"name":"brief","type":"array","required":true,"desc":"内容简介","level": 2}
+     * @return {"name":"time","type":"array","required":true,"desc":"时间","level": 2}
+     * @return {"name":"story_id","type":"array","required":true,"desc":"故事ID","level": 2}
+     */
+     public function SerDataLi()
+     {
+          $request = (Request::instance())->param();
+          $SeriesList  = (new Ser_m())->SerDataList();
+          $this->success(__('成功'),$SeriesList);
+     }
 }

@@ -17,7 +17,7 @@ use think\Request;
 class Series  extends  Api
 {
 	/**
-     * @title 系列列表
+     * @title 系列分类列表
      * @desc  {"0":"/getserLi","1":"请求方式：GET"}
      * @return {"name":"code","type":"int","required":true,"desc":"返回状态（1:成功返回，500:系统内部错误）","level": 1}
      * @return {"name":"msg","type":"string","required":true,"desc":"成功","level": 1}

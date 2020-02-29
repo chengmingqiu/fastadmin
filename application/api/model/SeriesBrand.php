@@ -28,13 +28,18 @@ class SeriesBrand extends Model
         return Config('ip')  . $value;
     }
 
-    public function SeriesBrandList($param)
+    public function SeriesBrandList($param, $IsItem)
     {
         $current     = isset($param['current'])     ? intval($param['current'])    : 1;
         $pagesize = isset($param['pagesize']) ? intval($param['pagesize']): 10;
         $where = [];
         if(isset($param['id']) && !empty($param['id'])){
             $where['s.id'] = $param['id'];
+        }
+        if( $IsItem == 1){
+            $field = ['a.id','a.title','a.image','date_format(a.update_time,"%Y月%m日") as time'];
+        }else if( $IsItem == 2){
+            $field = ['a.id','a.title','a.brief','a.image','date_format(a.update_time,"%Y-%m-%d") as time'];
         }
         $count = $this
                 ->alias('a')
@@ -44,7 +49,7 @@ class SeriesBrand extends Model
                 ->count();
         $list = $this
                 ->alias('a')
-                ->field(['a.id','a.title','a.image','date_format(a.update_time,"%Y月%m日") as time'])
+                ->field($field)
                 ->join('be_series s','a.s_id = s.id','left')
                 // ->join('be_series_brand b','a.l_id = b.id','left')
                 ->order('a.update_time','desc')

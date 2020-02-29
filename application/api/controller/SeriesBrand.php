@@ -43,7 +43,8 @@ class SeriesBrand  extends  Api
     if(empty($request['id'])){
          $this->error(__('失败'),'系列ID不能为空');
     }
-		$SeriesBrandList  = (new Ser_b())->SeriesBrandList($request);
+    $IsItem  = 1;
+		$SeriesBrandList  = (new Ser_b())->SeriesBrandList($request, $IsItem);
 		$this->success(__('成功'),$SeriesBrandList);
 	}
 
