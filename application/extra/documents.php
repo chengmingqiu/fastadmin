@@ -14,7 +14,7 @@ return [
         //app
         'app\api\controller\AppHomePage',
         'app\api\controller\AppSeries',
-        // 'app\api\controller\AppProduct',
+        'app\api\controller\AppProduct',
         'app\api\controller\AppSeriesBrand',
         
     ],

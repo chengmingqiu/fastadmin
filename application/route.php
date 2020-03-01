@@ -54,6 +54,8 @@ Route::get('getsDatliA','api/AppSeries/SerDataLi');
 //产品接口
 Route::get('getproLiA','api/AppProduct/PorductList');
 Route::get('getproFiA','api/AppProduct/ProductFind');
+//搜索产品
+Route::post('getproSeA','api/AppProduct/ProductSear');
 
 
 //故事接口

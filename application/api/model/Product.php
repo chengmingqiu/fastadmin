@@ -267,4 +267,97 @@ class Product extends Model
         ];
         return $data;
     }
+
+
+    /*
+    * app新增
+    */
+    public function PorductListA($param)
+    {
+        $current     = isset($param['current'])     ? intval($param['current'])    : 1;
+        $pagesize = isset($param['pagesize']) ? intval($param['pagesize']): 10;
+        $sort     = isset($param['sort']) && !empty($param['sort'])    ? $param['sort']    : 2;
+        if($sort == 1){
+          $sort   = 'asc';
+        }else if($sort == 2){
+          $sort   = 'desc';
+        }
+        $where    = [];
+        $where    = 'a.big_type='.$param['id'].' OR '. 'a.small_type='.$param['id'];
+        $PorductCount = Db::table('be_product')
+                       ->alias('a')
+                       ->where($where)
+                       ->count();
+        $PorductList = Db::table('be_product')
+                       ->alias('a')
+                       ->field(['a.id','a.name as title','a.price','a.image'])
+                       ->order('a.update_time',$sort)
+                       ->where($where)
+                       ->limit(($current  - 1) * $pagesize ,$pagesize)
+                       ->select();
+       foreach ($PorductList as $k => $v) {
+           $PorductList[$k]['image'] = Config('ip')  .$v['image'];
+       }
+       return ['count'=>$PorductCount,'list'=>$PorductList,'pagination'=>['count'=>$PorductCount,'current'=>$current,'pageSize'=>$pagesize]];
+    }
+
+     /*
+    *商品搜索数据App
+    *$param['id'] 系列ID  / ['name'] 搜索内容
+    **/
+    public function ProductSearA($param)
+    {
+        $data = [];
+        $where = [];
+        $current     = isset($param['current'])     ? intval($param['current'])    : 1;
+        $pagesize    = isset($param['pagesize']) ? intval($param['pagesize']): 10;
+        $sort        = isset($param['sort'])  && !empty($param['sort'])   ? $param['sort']    : 2;
+        if($sort == 1){
+          $sort   = 'asc';
+        }else if($sort == 2){
+          $sort   = 'desc';
+        }
+        if(isset($param['name']) && !empty($param['name'])){
+           $where['name'] =['like','%'.$param['name'].'%'];
+        }
+        $ProCount = Db::table('be_product')->where($where)->count();
+        $ProSear  = Db::table('be_product')->alias('a')
+                    ->field(['a.id','a.name','a.image','a.price'])
+                    ->where($where)
+                    ->order('a.update_time',$sort)
+                    ->limit(($current  - 1) * $pagesize ,$pagesize)
+                    ->select();
+        if(!empty($ProSear)){
+            foreach ($ProSear as $k => $v) {
+                $ProSear[$k]['image'] = Config('ip')  . $v['image'];
+            }
+        }
+
+        //推荐商品
+        $whereReco = [];
+        if(isset($param['name']) && !empty($param['name'])){
+           $whereReco['name'] =['notlike','%'.$param['name'].'%'];
+        }
+        $ProReco  = Db::table('be_product')->field(['id','name','image','price'])->where($whereReco)->order('update_time','desc')->limit(0,3)->select();
+        foreach ($ProReco as $k => $v) {
+            $ProReco[$k]['image'] = Config('ip')  . $v['image'];
+        }
+
+        //查看更多
+        $series_id = Db::table('be_series')->field(['id'])->order('update_time','desc')->find()['id'];
+        
+        $data = [
+              'pSear'=>[
+                  'count'=>$ProCount,
+                  'list' =>$ProSear,
+                  'pagination'=>['count'=>$ProCount,'current'=>$current,'pageSize'=>$pagesize]
+              ],
+              'pReco'=>[
+                  'count'=>count($ProReco),
+                  'list' =>$ProReco,
+              ],
+              'series_id' =>$series_id,
+        ];
+        return $data;
+    }
 }

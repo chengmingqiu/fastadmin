@@ -152,11 +152,19 @@ class SeriesBrand extends Model
     {
         $list = $this
                 ->alias('a')
-                ->field(['a.id','a.image'])
+                ->field(['a.id','a.image','a.s_id'])
                 ->order('a.update_time','desc')
                 ->limit(0,3)
                 ->select();
-        return $list;
+        $data = [];
+        $series_id = '';
+        foreach ($list as $k => $v) {
+            $data['list'][$k]['id'] = $v->id;
+            $data['list'][$k]['image'] = $v->image;
+            $series_id = $v->s_id;
+        }
+        $data['series_id'] = $series_id;
+        return $data;
     }
 
 
