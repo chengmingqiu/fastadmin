@@ -57,30 +57,12 @@ class AppProduct  extends  Api
      * @return {"name":"data","type":"array","required":true,"desc":"数据data","level": 1}
      * @return {"name":"id","type":"string","required":true,"desc":"商品id","level": 2}
      * @return {"name":"title","type":"string","required":true,"desc":"标题","level": 2}
-     * @return {"name":"brief","type":"string","required":true,"desc":"简介","level": 2}
-     * @return {"name":"de_image","type":"array","required":true,"desc":"详情图片系列","level": 2}
-     * @return {"name":"list1","type":"array","required":true,"desc":"详情缩略图","level": 3}
-     * @return {"name":"list2","type":"array","required":true,"desc":"详情缩略图","level": 3}
-     * @return {"name":"specs","type":"array","required":true,"desc":"商品规格详情","level": 2}
-     * @return {"name":"a-level","type":"array","required":true,"desc":"规格1","level": 3}
-     * @return {"name":"key","type":"int","required":true,"desc":"键（对应规格键）","level": 4}
-     * @return {"name":"value","type":"string","required":true,"desc":"名称","level": 4}
-     * @return {"name":"b-level","type":"array","required":true,"desc":"规格2","level": 3}
-     * @return {"name":"a-level-》key","type":"array","required":true,"desc":"a-level里的key键","level": 4}
-     * @return {"name":"b_image","type":"array","required":true,"desc":"轮播图","level": 2}
-     * @return {"name":"goods_specs","type":"array","required":true,"desc":"内容规格","level": 2}
-     * @return {"name":"key","type":"string","required":true,"desc":"键","level": 3}
-     * @return {"name":"val","type":"string","required":true,"desc":"键","level": 3}
-     * @return {"name":"c_image","type":"array","required":true,"desc":"内容图片","level": 2}
+     * @return {"name":"price","type":"string","required":true,"desc":"价格","level": 2}
+     * @return {"name":"d_image","type":"array","required":true,"desc":"详情图片系列","level": 2}
      * @return {"name":"c_title","type":"string","required":true,"desc":"内容标题","level": 2}
      * @return {"name":"content","type":"string","required":true,"desc":"内容文本","level": 2}
-     * @return {"name":"type","type":"array","required":true,"desc":"类型数组","level": 2}
-     * @return {"name":"0","type":"array","required":true,"desc":"0","level": 3}
-     * @return {"name":"id","type":"int","required":true,"desc":"类型id","level": 4}
-     * @return {"name":"type","type":"string","required":true,"desc":"类型名称","level": 4}
-     * @return {"name":"1","type":"array","required":false,"desc":"1(非填)","level": 3}
-     * @return {"name":"id","type":"int","required":false,"desc":"类型id","level": 4}
-     * @return {"name":"type","type":"string","required":false,"desc":"类型名称","level": 4}
+     * @return {"name":"content2","type":"string","required":true,"desc":"内容文本2","level": 2}
+     * @return {"name":"c_image","type":"array","required":true,"desc":"内容图片","level": 2}
      */
 	public function ProductFind()
 	{
