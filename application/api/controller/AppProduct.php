@@ -88,7 +88,7 @@ class AppProduct  extends  Api
           if(empty($request['id'])){
                $this->error(__('失败'),'商品ID不能为空');
           }
-		$ProductFind = (new pro_m)->ProductFind($request['id']);
+		$ProductFind = (new pro_m)->ProductFindA($request['id']);
 		$this->success(__('成功'),$ProductFind);
 	}
 
@@ -106,7 +106,7 @@ class AppProduct  extends  Api
      * @return {"name":"count","type":"int","required":true,"desc":"查询数量","level": 3}
      * @return {"name":"list","type":"array","required":true,"desc":"产品数据","level": 3}
      * @return {"name":"id","type":"int","required":true,"desc":"产品ID","level": 4}
-     * @return {"name":"name","type":"string","required":true,"desc":"产品名称","level": 4}
+     * @return {"name":"title","type":"string","required":true,"desc":"产品名称","level": 4}
      * @return {"name":"image","type":"string","required":true,"desc":"封面图片","level": 4}
      * @return {"name":"price","type":"string","required":true,"desc":"价格","level": 4}
      * @return {"name":"pagination","type":"array","required":true,"desc":"分页数据","level": 3}
@@ -117,7 +117,7 @@ class AppProduct  extends  Api
      * @return {"name":"count","type":"int","required":true,"desc":"查询数量","level": 3}
      * @return {"name":"list","type":"array","required":true,"desc":"数据","level": 3}
      * @return {"name":"id","type":"int","required":true,"desc":"产品ID","level": 4}
-     * @return {"name":"name","type":"string","required":true,"desc":"产品名称","level": 4}
+     * @return {"name":"title","type":"string","required":true,"desc":"产品名称","level": 4}
      * @return {"name":"image","type":"string","required":true,"desc":"封面图片","level": 4}
      * @return {"name":"price","type":"string","required":true,"desc":"价格","level": 4}
      * @return {"name":"series_id","type":"int","required":true,"desc":"查看更多（系列ID）","level": 2}
