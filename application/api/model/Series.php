@@ -110,4 +110,11 @@ class Series extends Model
       }
       return $data;
     }
+
+    //系列分类
+    public function SeriesListA()
+    {
+      $list = Db::table('be_series')->field(['id','type as name'])->select();
+      return $list;
+    }
 }

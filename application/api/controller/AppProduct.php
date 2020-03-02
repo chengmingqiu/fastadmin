@@ -50,7 +50,7 @@ class AppProduct  extends  Api
 
 	/**
      * @title 商品详情
-     * @desc  {"0":"/getproFi","1":"请求方式：GET"}
+     * @desc  {"0":"/getproFiA","1":"请求方式：GET"}
      * @param {"name":"id","type":"int","required":true,"desc":"商品ID"}
      * @return {"name":"msg","type":"string","required":true,"desc":"成功","level": 1}
      * @return {"name":"time","type":"int","required":true,"desc":"返回时间戳","level": 1}

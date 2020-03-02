@@ -36,10 +36,12 @@ class Product extends Model
       //新增判断
       if($IsItem == 1){
           $limit = 8;
+          $field = ['id','image'];
       }else if($IsItem == 2){
           $limit = 4;
+          $field = ['id','image','name as title','price'];
       }
-      $data =    $this->field(['id','image'])->where(['is_recom'=>1])->order('update_time','desc')->limit(0,$limit)->select();
+      $data =    $this->field($field)->where(['is_recom'=>1])->order('update_time','desc')->limit(0,$limit)->select();
       if(!empty($data) && $IsItem == 1){
         $list['list1'] = array_slice($data, 0,3);
         $list['list2'] = array_slice($data, 3,2);
@@ -380,23 +382,32 @@ class Product extends Model
                   $ProductFind['d_image'][$k]  = Config('ip')  .$v;
               }
         }
-        if(!empty($ProductFind['con_image'])){
-              $ProductFind['con_image']  =  explode(',', $ProductFind['con_image']);
-              $i = 1;
-              foreach ($ProductFind['con_image'] as $k => $v) {
-                  if($k  <= $i){
-                        $ProductFind['c_image'][$k] = Config('ip')  .$v;
-                  }
-              }
-        }
-        $ProField    = ['id','title','price','d_image','c_title','content','content2','c_image'];
-        $Data = [];
-        foreach ($ProductFind as $k => $v) {
-          if(in_array($k, $ProField)){
-              $Data[$k] = $v;
-          }
-        }
-        
-        return $Data;
+        $ProductFind['con_image'] = explode(',',$ProductFind['con_image']);
+        $returnData = [
+              'id' =>  $ProductFind['id'],
+              'pics' => $ProductFind['d_image'],
+              'title' => $ProductFind['title'],
+              'price' => $ProductFind['price'],
+              'price' => $ProductFind['price'],
+              'content'=>[
+                    [
+                      'type'=>'pic',
+                      'content' =>!empty($ProductFind['con_image'][0])?Config('ip')  .$ProductFind['con_image'][0]:'',
+                    ],
+                    [
+                      'type'=>'text',
+                      'content' => $ProductFind['content'],
+                    ],
+                    [
+                      'type'=>'pic',
+                      'content' => !empty($ProductFind['con_image'][1])?Config('ip')  .$ProductFind['con_image'][1]:'',
+                    ],
+                    [
+                      'type'=>'text',
+                      'content' => $ProductFind['content2'],
+                    ],
+              ],  
+        ];
+        return $returnData;
     }
 }
