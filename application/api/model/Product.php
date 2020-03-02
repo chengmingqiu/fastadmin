@@ -370,7 +370,7 @@ class Product extends Model
     {
         $ProductFind = Db::table('be_product')
                        ->alias('a')
-                       ->field(['a.id','a.name as title','a.price','a.brief','a.details_image as d_image','a.specs','a.brief_image as b_image','a.goods_specs','a.con_image','a.con_title as c_title','a.con as content','a.con1 as content2',
+                       ->field(['a.id','a.name as title','a.price','a.series_id','a.brief','a.details_image as d_image','a.specs','a.brief_image as b_image','a.goods_specs','a.con_image','a.con_title as c_title','a.con as content','a.con1 as content2',
                         'a.small_type','s.id as s_id','s.type as type'])
                        ->join('be_series s','a.big_type = s.id','left')
                        // ->join('be_product_type pt','a.type = pt.id','left')
@@ -385,7 +385,7 @@ class Product extends Model
         $ProductFind['con_image'] = explode(',',$ProductFind['con_image']);
         $returnData = [
               'id' =>  $ProductFind['id'],
-              'pics' => $ProductFind['d_image'],
+              'image' => $ProductFind['d_image'],
               'title' => $ProductFind['title'],
               'price' => $ProductFind['price'],
               'price' => $ProductFind['price'],
@@ -408,6 +408,12 @@ class Product extends Model
                     ],
               ],  
         ];
-        return $returnData;
+        $ProRecowhere['series_id'] = $ProductFind['series_id'];
+        $ProRecowhere['id']        = ['<>',$ProductFind['id']];
+        $ProReco = Db::table('be_product')->field(['id','name as title','image','price'])->where($ProRecowhere)->limit(0,3)->select();
+        foreach ($ProReco as $k => $v) {
+            $ProReco[$k]['image'] = Config('ip')  . $v['image'];
+        }
+        return ['list'=>$returnData,'pReco'=>$ProReco];
     }
 }

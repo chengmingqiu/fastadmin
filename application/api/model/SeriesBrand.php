@@ -167,5 +167,41 @@ class SeriesBrand extends Model
         return $data;
     }
 
-
+    //
+    public function SeriesBrandFindA($id)
+    {
+        $where['a.id'] = $id;
+        $list = Db::table('be_series_brand')
+                ->alias('a')
+                ->field(['a.id','a.title','a.image','a.s_id','s.title as series_title','s.brief as series_brief','b.ori_title as o_title','b.ori_brief as o_brief','b.ori_image as o_image1','b.ori_con as o_con1','b.ori_image1 as o_image2','b.ori_con1 as o_con2','b.idea_title as i_title','b.idea_brief as i_brief','b.idea_image  as i_image','b.idea_con as i_con','b.stor_title as s_title','b.stor_brief as  s_brief','b.stor_image as s_image','b.stor_con as s_con1','b.stor_con1 as s_con2','b.stor_vide as s_vide','b.vide_con as v_con','b.adva_title as a_title','b.adva_brief as a_brief','b.adva_image as a_image','b.adva_name as a_name','b.adva_image1 as a_image1','b.adva_name1 as a_name1','b.adva_image2 as a_image2','b.adva_name2 as a_name2','b.adva_con as a_con','date_format(a.update_time,"%Y-%m-%d") as time'])
+                ->join('be_series s','a.s_id = s.id','left')
+                ->join('be_series_brand_list b','a.l_id = b.id','left')
+                ->order('a.update_time','desc')
+                ->where($where)
+                ->find();
+        $ReData = [
+                'id' => $list['id'],
+                'title' => $list['title'],
+                'time'  => $list['time'],
+                'content'=>[
+                    [
+                      'type'=>'text',
+                      'content' => $list['o_con1'],
+                    ],
+                    [
+                      'type'=>'pic',
+                      'content' => Config('ip') .$list['image'],
+                    ],
+                    [
+                      'type'=>'text',
+                      'content' => $list['v_con'],
+                    ],
+              ],  
+        ];
+        $ProReco = Db::table('be_product')->field(['id','name as title','image','price'])->where(['series_id'=>$list['s_id']])->limit(0,3)->select();
+        foreach ($ProReco as $k => $v) {
+            $ProReco[$k]['image'] = Config('ip')  . $v['image'];
+        }
+        return ['list'=>$ReData,'pReco'=>$ProReco];
+    }
 }

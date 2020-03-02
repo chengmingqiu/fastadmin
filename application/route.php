@@ -49,6 +49,7 @@ Route::get('getSeriA','api/AppHomePage/GetSeri');
 //系列列表
 Route::get('getserLiA','api/AppSeries/SeriesList');
 Route::get('getsDatliA','api/AppSeries/SerDataLi');
+Route::get('getserFiA','api/AppSeries/SerserFiA');
 
 
 //产品接口

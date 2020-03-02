@@ -117,4 +117,35 @@ class Series extends Model
       $list = Db::table('be_series')->field(['id','type as name'])->select();
       return $list;
     }
+
+    public function SerFiA($id)
+    {
+       $find = Db::table('be_series')->field(['id','title','image','date_format(update_time,"%Y-%m-%d") as time','content'])->where(['id'=>$id])->find();
+       $find['image'] =Config('ip'). explode(',', $find['image'])[1];
+       $ReturnData = [
+              'id'   =>    $find['id'],
+              'title'=>    $find['title'],
+              'time' =>    $find['time'],
+              'content' => [
+                    [
+                      'type'=>'text',
+                      'content' =>$find['content'],
+                    ],
+                    [
+                      'type'=>'pic',
+                      'content' =>$find['image'],
+                    ],
+                    [
+                      'type'=>'text',
+                      'content' =>$find['content'],
+                    ],
+              ],
+       ];
+       $ProReco  = Db::table('be_product')->field(['id','name as title','image','price'])->where(['series_id'=>$id])->order('update_time','desc')->limit(0,3)->select();
+        foreach ($ProReco as $k => $v) {
+            $ProReco[$k]['image'] = Config('ip')  . $v['image'];
+        }
+       
+       return ['list'=>$ReturnData,'pReco'=>$ProReco];
+    }
 }

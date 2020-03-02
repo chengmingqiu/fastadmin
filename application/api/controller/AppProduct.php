@@ -55,14 +55,19 @@ class AppProduct  extends  Api
      * @return {"name":"msg","type":"string","required":true,"desc":"成功","level": 1}
      * @return {"name":"time","type":"int","required":true,"desc":"返回时间戳","level": 1}
      * @return {"name":"data","type":"array","required":true,"desc":"数据data","level": 1}
-     * @return {"name":"id","type":"string","required":true,"desc":"商品id","level": 2}
-     * @return {"name":"title","type":"string","required":true,"desc":"标题","level": 2}
-     * @return {"name":"price","type":"string","required":true,"desc":"价格","level": 2}
-     * @return {"name":"d_image","type":"array","required":true,"desc":"详情图片系列","level": 2}
-     * @return {"name":"c_title","type":"string","required":true,"desc":"内容标题","level": 2}
-     * @return {"name":"content","type":"string","required":true,"desc":"内容文本","level": 2}
-     * @return {"name":"content2","type":"string","required":true,"desc":"内容文本2","level": 2}
-     * @return {"name":"c_image","type":"array","required":true,"desc":"内容图片","level": 2}
+     * @return {"name":"list","type":"array","required":true,"desc":"数据","level": 2}
+     * @return {"name":"id","type":"string","required":true,"desc":"商品id","level": 3}
+     * @return {"name":"image","type":"string","required":true,"desc":"标题","level": 3}
+     * @return {"name":"title","type":"string","required":true,"desc":"标题","level": 3}
+     * @return {"name":"price","type":"string","required":true,"desc":"价格","level": 3}
+      * @return {"name":"content","type":"array","required":true,"desc":"详情数据","level": 3}
+     * @return {"name":"type","type":"char","required":true,"desc":"类型","level": 4}
+     * @return {"name":"content","type":"char","required":true,"desc":"内容","level": 4}
+     * @return {"name":"pReco","type":"array","required":true,"desc":"相关产品","level": 2}
+     * @return {"name":"id","type":"int","required":true,"desc":"产品ID","level": 3}
+     * @return {"name":"title","type":"char","required":true,"desc":"产品标题","level": 3}
+     * @return {"name":"image","type":"string","required":true,"desc":"图片","level": 3}
+     * @return {"name":"price","type":"int","required":true,"desc":"价格","level": 3}
      */
 	public function ProductFind()
 	{
