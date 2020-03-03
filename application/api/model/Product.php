@@ -340,7 +340,7 @@ class Product extends Model
         if(isset($param['name']) && !empty($param['name'])){
            $whereReco['name'] =['notlike','%'.$param['name'].'%'];
         }
-        $ProReco  = Db::table('be_product')->field(['id','name as title','image','price'])->where($whereReco)->order('update_time','desc')->limit(0,3)->select();
+        $ProReco  = Db::table('be_product')->field(['id','name as title','image','price'])->where($whereReco)->order('update_time','desc')->limit(0,2)->select();
         foreach ($ProReco as $k => $v) {
             $ProReco[$k]['image'] = Config('ip')  . $v['image'];
         }
