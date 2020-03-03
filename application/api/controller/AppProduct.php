@@ -31,7 +31,7 @@ class AppProduct  extends  Api
      * @return {"name":"list","type":"array","required":true,"desc":"数据列表","level": 2}
      * @return {"name":"id","type":"string","required":true,"desc":"商品id","level": 3}
      * @return {"name":"title","type":"string","required":true,"desc":"标题","level": 3}
-     * @return {"name":"price","type":"string","required":true,"desc":"价格","level": 3}
+     * @return {"name":"price","type":"number","required":true,"desc":"价格","level": 3}
      * @return {"name":"image","type":"string","required":true,"desc":"封面","level": 3}
      * @return {"name":"pagination","type":"array","required":true,"desc":"分页数据","level": 2}
      * @return {"name":"count","type":"int","required":true,"desc":"分页总数","level": 3}
@@ -59,7 +59,7 @@ class AppProduct  extends  Api
      * @return {"name":"id","type":"string","required":true,"desc":"商品id","level": 3}
      * @return {"name":"image","type":"string","required":true,"desc":"标题","level": 3}
      * @return {"name":"title","type":"string","required":true,"desc":"标题","level": 3}
-     * @return {"name":"price","type":"string","required":true,"desc":"价格","level": 3}
+     * @return {"name":"price","type":"number","required":true,"desc":"价格","level": 3}
       * @return {"name":"content","type":"array","required":true,"desc":"详情数据","level": 3}
      * @return {"name":"type","type":"char","required":true,"desc":"类型","level": 4}
      * @return {"name":"content","type":"char","required":true,"desc":"内容","level": 4}
@@ -67,7 +67,7 @@ class AppProduct  extends  Api
      * @return {"name":"id","type":"int","required":true,"desc":"产品ID","level": 3}
      * @return {"name":"title","type":"char","required":true,"desc":"产品标题","level": 3}
      * @return {"name":"image","type":"string","required":true,"desc":"图片","level": 3}
-     * @return {"name":"price","type":"int","required":true,"desc":"价格","level": 3}
+     * @return {"name":"price","type":"number","required":true,"desc":"价格","level": 3}
      */
 	public function ProductFind()
 	{
@@ -93,7 +93,7 @@ class AppProduct  extends  Api
      * @return {"name":"id","type":"int","required":true,"desc":"产品ID","level": 3}
      * @return {"name":"title","type":"string","required":true,"desc":"产品名称","level": 3}
      * @return {"name":"image","type":"string","required":true,"desc":"封面图片","level": 3}
-     * @return {"name":"price","type":"string","required":true,"desc":"价格","level": 3}
+     * @return {"name":"price","type":"number","required":true,"desc":"价格","level": 3}
      * @return {"name":"pagination","type":"array","required":true,"desc":"分页数据","level": 2}
      * @return {"name":"count","type":"int","required":true,"desc":"分页总数","level": 3}
      * @return {"name":"current","type":"int","required":true,"desc":"当前页","level": 3}
@@ -120,7 +120,7 @@ class AppProduct  extends  Api
      * @return {"name":"id","type":"int","required":true,"desc":"产品ID","level": 2}
      * @return {"name":"title","type":"char","required":true,"desc":"产品标题","level": 2}
      * @return {"name":"image","type":"string","required":true,"desc":"图片","level": 2}
-     * @return {"name":"price","type":"int","required":true,"desc":"价格","level": 2}
+     * @return {"name":"price","type":"number","required":true,"desc":"价格","level": 2}
      */
      public function getpseHoA()
      {

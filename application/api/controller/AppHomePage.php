@@ -63,7 +63,7 @@ class AppHomePage  extends  Api
      * @return {"name":"id","type":"int","required":true,"desc":"商品ID","level": 3}
      * @return {"name":"image","type":"string","required":true,"desc":"商品图","level": 3}
      * @return {"name":"title","type":"string","required":true,"desc":"标题","level": 3}
-     * @return {"name":"price","type":"string","required":true,"desc":"价格","level": 3}
+     * @return {"name":"price","type":"number","required":true,"desc":"价格","level": 3}
      * @return {"name":"series_id","type":"int","required":true,"desc":"系列ID","level": 2}
      */
     public function GetPro()

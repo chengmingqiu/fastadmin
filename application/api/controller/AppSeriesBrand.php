@@ -68,7 +68,7 @@ class AppSeriesBrand  extends  Api
      * @return {"name":"id","type":"int","required":true,"desc":"产品ID","level": 3}
      * @return {"name":"title","type":"char","required":true,"desc":"产品标题","level": 3}
      * @return {"name":"image","type":"string","required":true,"desc":"图片","level": 3}
-     * @return {"name":"price","type":"int","required":true,"desc":"价格","level": 3}
+     * @return {"name":"price","type":"number","required":true,"desc":"价格","level": 3}
      */    
      public function SeriesBrandFind()
      {
