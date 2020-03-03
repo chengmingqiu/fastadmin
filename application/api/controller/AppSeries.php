@@ -84,6 +84,9 @@ class AppSeries  extends  Api
      public function SerserFiA()
      {
           $request = (Request::instance())->param();
+          if(empty($request['id'])){
+             $this->error(__('失败'),'系列ID不能为空');
+          }
           $SeriesList  = (new Ser_m())->SerFiA($request['id']);
           $this->success(__('成功'),$SeriesList);
      }
