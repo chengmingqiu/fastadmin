@@ -51,7 +51,7 @@ class AppSeries  extends  Api
      * @return {"name":"pagination","type":"array","required":true,"desc":"分页数据","level": 2}
      * @return {"name":"count","type":"int","required":true,"desc":"分页总数","level": 3}
      * @return {"name":"current","type":"int","required":true,"desc":"当前页","level": 3}
-     * @return {"name":"pageSize","type":"int","required":true,"desc":"展示条数","level": 3}
+     * @return {"name":"pagesize","type":"int","required":true,"desc":"展示条数","level": 3}
      */
      public function SerDataLi()
      {

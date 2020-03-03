@@ -114,7 +114,7 @@ class Series extends Model
         }
       }
 
-       return ['list'=>$data,'pagination'=>['count'=>$count,'current'=>$current,'pageSize'=>$pagesize]];
+       return ['list'=>$data,'pagination'=>['count'=>$count,'current'=>$current,'pagesize'=>$pagesize]];
     }
 
     //系列分类

@@ -103,7 +103,7 @@ class Product extends Model
             unset($PorductList[$k]['s_id']);
           }
         }
-        return ['count'=>$PorductCount,'list'=>$PorductList,'pagination'=>['count'=>$PorductCount,'current'=>$current,'pageSize'=>$pagesize]];
+        return ['count'=>$PorductCount,'list'=>$PorductList,'pagination'=>['count'=>$PorductCount,'current'=>$current,'pagesize'=>$pagesize]];
     }
 
     //商品详情
@@ -300,7 +300,7 @@ class Product extends Model
        foreach ($PorductList as $k => $v) {
            $PorductList[$k]['image'] = Config('ip')  .$v['image'];
        }
-       return ['count'=>$PorductCount,'list'=>$PorductList,'pagination'=>['count'=>$PorductCount,'current'=>$current,'pageSize'=>$pagesize]];
+       return ['count'=>$PorductCount,'list'=>$PorductList,'pagination'=>['count'=>$PorductCount,'current'=>$current,'pagesize'=>$pagesize]];
     }
 
      /*
@@ -337,7 +337,7 @@ class Product extends Model
         
         $data = [
               'list' =>$ProSear,
-              'pagination'=>['count'=>$ProCount,'current'=>$current,'pageSize'=>$pagesize],
+              'pagination'=>['count'=>$ProCount,'current'=>$current,'pagesize'=>$pagesize],
         ];
         return $data;
     }

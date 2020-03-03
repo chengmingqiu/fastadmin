@@ -57,7 +57,7 @@ class SeriesBrand extends Model
                 ->limit(($current - 1) * $pagesize ,$pagesize)
                 ->select();
                 
-        return ['count'=>$count,'list'=>$list,'pagination'=>['count'=>$count,'current'=>$current,'pageSize'=>$pagesize]];
+        return ['count'=>$count,'list'=>$list,'pagination'=>['count'=>$count,'current'=>$current,'pagesize'=>$pagesize]];
     }
 
     public function SeriesBrandFind($param)
