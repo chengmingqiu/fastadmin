@@ -56,7 +56,7 @@ Route::get('getserFiA','api/AppSeries/SerserFiA');
 Route::get('getproLiA','api/AppProduct/PorductList');
 Route::get('getproFiA','api/AppProduct/ProductFind');
 //搜索产品
-Route::post('getproSeA','api/AppProduct/ProductSear');
+Route::get('getproSeA','api/AppProduct/ProductSear');
 
 
 //故事接口
