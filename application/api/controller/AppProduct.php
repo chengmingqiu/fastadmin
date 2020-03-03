@@ -111,7 +111,7 @@ class AppProduct  extends  Api
      }
 
      /**
-     * @title 搜索下推荐商品
+     * @title 搜索-->>推荐商品
      * @desc  {"0":"/getpseHoA","1":"请求方式：GET"}
      * @return {"name":"msg","type":"string","required":true,"desc":"成功","level": 1}
      * @return {"name":"time","type":"int","required":true,"desc":"返回时间戳","level": 1}
