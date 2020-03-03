@@ -56,7 +56,7 @@ class AppProduct  extends  Api
      * @return {"name":"time","type":"int","required":true,"desc":"返回时间戳","level": 1}
      * @return {"name":"data","type":"array","required":true,"desc":"数据data","level": 1}
      * @return {"name":"list","type":"array","required":true,"desc":"数据","level": 2}
-     * @return {"name":"id","type":"string","required":true,"desc":"商品id","level": 3}
+     * @return {"name":"id","type":"int","required":true,"desc":"商品id","level": 3}
      * @return {"name":"image","type":"string","required":true,"desc":"标题","level": 3}
      * @return {"name":"title","type":"string","required":true,"desc":"标题","level": 3}
      * @return {"name":"price","type":"number","required":true,"desc":"价格","level": 3}
@@ -81,7 +81,7 @@ class AppProduct  extends  Api
 
      /**
      * @title 搜索名称
-     * @desc  {"0":"/getproSeA","1":"请求方式：POST"}
+     * @desc  {"0":"/getproSeA","1":"请求方式：GET"}
      * @param {"name":"name","type":"string","required":true,"desc":"产品名称"}
      * @param {"name":"current","type":"int","required":false,"desc":"分页(默认第一页)"}
      * @param {"name":"pagesize","type":"int","required":false,"desc":"展示条数（默认10条）"}
@@ -98,7 +98,6 @@ class AppProduct  extends  Api
      * @return {"name":"count","type":"int","required":true,"desc":"分页总数","level": 3}
      * @return {"name":"current","type":"int","required":true,"desc":"当前页","level": 3}
      * @return {"name":"pageSize","type":"int","required":true,"desc":"展示条数","level": 3}
-     * @return {"name":"series_id","type":"int","required":true,"desc":"查看更多（系列ID）","level": 2}
      */
 
      public function ProductSear()

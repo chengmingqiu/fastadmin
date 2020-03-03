@@ -334,24 +334,10 @@ class Product extends Model
                 $ProSear[$k]['image'] = Config('ip')  . $v['image'];
             }
         }
-
-        //推荐商品
-        $whereReco = [];
-        if(isset($param['name']) && !empty($param['name'])){
-           $whereReco['name'] =['notlike','%'.$param['name'].'%'];
-        }
-        $ProReco  = Db::table('be_product')->field(['id','name as title','image','price'])->where($whereReco)->order('update_time','desc')->limit(0,2)->select();
-        foreach ($ProReco as $k => $v) {
-            $ProReco[$k]['image'] = Config('ip')  . $v['image'];
-        }
-
-        //查看更多
-        $series_id = Db::table('be_series')->field(['id'])->order('update_time','desc')->find()['id'];
         
         $data = [
               'list' =>$ProSear,
               'pagination'=>['count'=>$ProCount,'current'=>$current,'pageSize'=>$pagesize],
-              'series_id' =>$series_id,
         ];
         return $data;
     }

@@ -71,7 +71,7 @@ class AppSeries  extends  Api
      * @return {"name":"list","type":"array","required":true,"desc":"数据","level": 2}
      * @return {"name":"id","type":"int","required":true,"desc":"系列id","level": 3}
      * @return {"name":"title","type":"string","required":true,"desc":"标题","level": 3}
-     * @return {"name":"time","type":"date","required":true,"desc":"时间","level": 3}
+     * @return {"name":"time","type":"string","required":true,"desc":"时间","level": 3}
      * @return {"name":"content","type":"array","required":true,"desc":"详情数据","level": 3}
      * @return {"name":"type","type":"char","required":true,"desc":"类型（pic）图片，（text）文本","level": 4}
      * @return {"name":"content","type":"char","required":true,"desc":"内容","level": 4}
