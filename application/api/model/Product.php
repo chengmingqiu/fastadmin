@@ -300,7 +300,7 @@ class Product extends Model
        foreach ($PorductList as $k => $v) {
            $PorductList[$k]['image'] = Config('ip')  .$v['image'];
        }
-       return ['count'=>$PorductCount,'list'=>$PorductList,'pagination'=>['current'=>$current,'pageSize'=>$pagesize]];
+       return ['list'=>$PorductList,'pagination'=>['count'=>$PorductCount,'current'=>$current,'pageSize'=>$pagesize]];
     }
 
      /*
