@@ -27,7 +27,6 @@ class AppProduct  extends  Api
      * @return {"name":"msg","type":"string","required":true,"desc":"成功","level": 1}
      * @return {"name":"time","type":"int","required":true,"desc":"返回时间戳","level": 1}
      * @return {"name":"data","type":"array","required":true,"desc":"数据data","level": 1}
-     * @return {"name":"count","type":"int","required":true,"desc":"查询数量","level": 2}
      * @return {"name":"list","type":"array","required":true,"desc":"数据列表","level": 2}
      * @return {"name":"id","type":"string","required":true,"desc":"商品id","level": 3}
      * @return {"name":"title","type":"string","required":true,"desc":"标题","level": 3}
