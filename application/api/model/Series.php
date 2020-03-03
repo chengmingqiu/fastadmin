@@ -95,7 +95,7 @@ class Series extends Model
     }
 
     //系列列表
-    public function SerDataList()
+    public function SerDataList($param)
     {
       $current     = isset($param['current'])     ? intval($param['current'])    : 1;
       $pagesize = isset($param['pagesize']) ? intval($param['pagesize']): 10;

@@ -56,7 +56,7 @@ class AppSeries  extends  Api
      public function SerDataLi()
      {
           $request = (Request::instance())->param();
-          $SeriesList  = (new Ser_m())->SerDataList();
+          $SeriesList  = (new Ser_m())->SerDataList($request);
           $this->success(__('成功'),$SeriesList);
      }
 
