@@ -277,7 +277,7 @@ class Product extends Model
     public function PorductListA($param)
     {
         $current     = isset($param['current'])     ? intval($param['current'])    : 1;
-        $pagesize = isset($param['pagesize']) ? intval($param['pagesize']): 10;
+        $pagesize = isset($param['pageSize']) ? intval($param['pageSize']): 10;
         $sort     = isset($param['sort']) && !empty($param['sort'])    ? $param['sort']    : 2;
         if($sort == 1){
           $sort   = 'asc';
@@ -300,7 +300,7 @@ class Product extends Model
        foreach ($PorductList as $k => $v) {
            $PorductList[$k]['image'] = Config('ip')  .$v['image'];
        }
-       return ['count'=>$PorductCount,'list'=>$PorductList,'pagination'=>['count'=>$PorductCount,'current'=>$current,'pagesize'=>$pagesize]];
+       return ['count'=>$PorductCount,'list'=>$PorductList,'pagination'=>['count'=>$PorductCount,'current'=>$current,'pageSize'=>$pagesize]];
     }
 
      /*
@@ -312,7 +312,7 @@ class Product extends Model
         $data = [];
         $where = [];
         $current     = isset($param['current'])     ? intval($param['current'])    : 1;
-        $pagesize    = isset($param['pagesize']) ? intval($param['pagesize']): 10;
+        $pagesize    = isset($param['pageSize']) ? intval($param['pageSize']): 10;
         $sort        = isset($param['sort'])  && !empty($param['sort'])   ? $param['sort']    : 2;
         if($sort == 1){
           $sort   = 'asc';
@@ -337,7 +337,7 @@ class Product extends Model
         
         $data = [
               'list' =>$ProSear,
-              'pagination'=>['count'=>$ProCount,'current'=>$current,'pagesize'=>$pagesize],
+              'pagination'=>['count'=>$ProCount,'current'=>$current,'pageSize'=>$pagesize],
         ];
         return $data;
     }

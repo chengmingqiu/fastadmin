@@ -21,7 +21,7 @@ class AppSeriesBrand  extends  Api
      * @desc  {"0":"/getserbLiA","1":"请求方式：GET"}
      * @param {"name":"id","type":"int","required":false,"desc":"系列ID（）"}
      * @param {"name":"current","type":"int","required":false,"desc":"分页(默认第一页)"}
-     * @param {"name":"pagesize","type":"int","required":false,"desc":"展示条数（默认10条）"}
+     * @param {"name":"pageSize","type":"int","required":false,"desc":"展示条数（默认10条）"}
      * @return {"name":"code","type":"int","required":true,"desc":"返回状态（1:成功返回，500:系统内部错误）","level": 1}
      * @return {"name":"msg","type":"string","required":true,"desc":"成功","level": 1}
      * @return {"name":"time","type":"int","required":true,"desc":"返回时间戳","level": 1}
@@ -36,7 +36,7 @@ class AppSeriesBrand  extends  Api
      * @return {"name":"pagination","type":"array","required":true,"desc":"分页数据","level": 2}
      * @return {"name":"count","type":"int","required":true,"desc":"分页总数","level": 3}
      * @return {"name":"current","type":"int","required":true,"desc":"当前页","level": 3}
-     * @return {"name":"pagesize","type":"int","required":true,"desc":"展示条数","level": 3}
+     * @return {"name":"pageSize","type":"int","required":true,"desc":"展示条数","level": 3}
      */
 	public function SeriesBrandList()
 	{

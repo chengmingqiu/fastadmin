@@ -31,15 +31,17 @@ class SeriesBrand extends Model
     public function SeriesBrandList($param, $IsItem)
     {
         $current     = isset($param['current'])     ? intval($param['current'])    : 1;
-        $pagesize = isset($param['pagesize']) ? intval($param['pagesize']): 10;
+       
         $where = [];
         if(isset($param['id']) && !empty($param['id'])){
             $where['s.id'] = $param['id'];
         }
         if( $IsItem == 1){
+             $pagesize = isset($param['pagesize']) ? intval($param['pagesize']): 10;
             $field = ['a.id','a.title','a.image','date_format(a.update_time,"%Y月%m日") as time'];
         }else if( $IsItem == 2){
             $field = ['a.id','a.title','a.brief','a.image','date_format(a.update_time,"%Y-%m-%d") as time'];
+             $pagesize = isset($param['pageSize']) ? intval($param['pageSize']): 10;
         }
         $count = $this
                 ->alias('a')
@@ -57,7 +59,7 @@ class SeriesBrand extends Model
                 ->limit(($current - 1) * $pagesize ,$pagesize)
                 ->select();
                 
-        return ['count'=>$count,'list'=>$list,'pagination'=>['count'=>$count,'current'=>$current,'pagesize'=>$pagesize]];
+        return ['count'=>$count,'list'=>$list,'pagination'=>['count'=>$count,'current'=>$current,'pageSize'=>$pagesize]];
     }
 
     public function SeriesBrandFind($param)

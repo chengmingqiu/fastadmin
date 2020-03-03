@@ -98,7 +98,7 @@ class Series extends Model
     public function SerDataList($param)
     {
       $current     = isset($param['current'])     ? intval($param['current'])    : 1;
-      $pagesize = isset($param['pagesize']) ? intval($param['pagesize']): 10;
+      $pagesize = isset($param['pageSize']) ? intval($param['pageSize']): 10;
       $where = [];
       $count  = Db::table('be_series')->count();
       $data = Db::table('be_series')
@@ -114,7 +114,7 @@ class Series extends Model
         }
       }
 
-       return ['list'=>$data,'pagination'=>['count'=>$count,'current'=>$current,'pagesize'=>$pagesize]];
+       return ['list'=>$data,'pagination'=>['count'=>$count,'current'=>$current,'pageSize'=>$pagesize]];
     }
 
     //系列分类
