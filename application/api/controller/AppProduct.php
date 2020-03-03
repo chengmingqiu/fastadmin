@@ -89,24 +89,15 @@ class AppProduct  extends  Api
      * @return {"name":"msg","type":"string","required":true,"desc":"成功","level": 1}
      * @return {"name":"time","type":"int","required":true,"desc":"返回时间戳","level": 1}
      * @return {"name":"data","type":"array","required":true,"desc":"数据data","level": 1}
-     * @return {"name":"pSear","type":"array","required":true,"desc":"搜索结果","level": 2}
-     * @return {"name":"count","type":"int","required":true,"desc":"查询数量","level": 3}
-     * @return {"name":"list","type":"array","required":true,"desc":"产品数据","level": 3}
-     * @return {"name":"id","type":"int","required":true,"desc":"产品ID","level": 4}
-     * @return {"name":"title","type":"string","required":true,"desc":"产品名称","level": 4}
-     * @return {"name":"image","type":"string","required":true,"desc":"封面图片","level": 4}
-     * @return {"name":"price","type":"string","required":true,"desc":"价格","level": 4}
-     * @return {"name":"pagination","type":"array","required":true,"desc":"分页数据","level": 3}
-     * @return {"name":"count","type":"int","required":true,"desc":"分页总数","level": 4}
-     * @return {"name":"current","type":"int","required":true,"desc":"当前页","level": 4}
-     * @return {"name":"pageSize","type":"int","required":true,"desc":"展示条数","level": 4}
-     * @return {"name":"pReco","type":"array","required":true,"desc":"热门产品","level": 2}
-     * @return {"name":"count","type":"int","required":true,"desc":"查询数量","level": 3}
-     * @return {"name":"list","type":"array","required":true,"desc":"数据","level": 3}
-     * @return {"name":"id","type":"int","required":true,"desc":"产品ID","level": 4}
-     * @return {"name":"title","type":"string","required":true,"desc":"产品名称","level": 4}
-     * @return {"name":"image","type":"string","required":true,"desc":"封面图片","level": 4}
-     * @return {"name":"price","type":"string","required":true,"desc":"价格","level": 4}
+     * @return {"name":"list","type":"array","required":true,"desc":"产品数据","level": 2}
+     * @return {"name":"id","type":"int","required":true,"desc":"产品ID","level": 3}
+     * @return {"name":"title","type":"string","required":true,"desc":"产品名称","level": 3}
+     * @return {"name":"image","type":"string","required":true,"desc":"封面图片","level": 3}
+     * @return {"name":"price","type":"string","required":true,"desc":"价格","level": 3}
+     * @return {"name":"pagination","type":"array","required":true,"desc":"分页数据","level": 2}
+     * @return {"name":"count","type":"int","required":true,"desc":"分页总数","level": 3}
+     * @return {"name":"current","type":"int","required":true,"desc":"当前页","level": 3}
+     * @return {"name":"pageSize","type":"int","required":true,"desc":"展示条数","level": 3}
      * @return {"name":"series_id","type":"int","required":true,"desc":"查看更多（系列ID）","level": 2}
      */
 
@@ -118,5 +109,22 @@ class AppProduct  extends  Api
           }
           $ProductSear = (new pro_m)->ProductSearA($request);
           $this->success(__('成功'),$ProductSear);
+     }
+
+     /**
+     * @title 搜索下推荐商品
+     * @desc  {"0":"/getpseHoA","1":"请求方式：GET"}
+     * @return {"name":"msg","type":"string","required":true,"desc":"成功","level": 1}
+     * @return {"name":"time","type":"int","required":true,"desc":"返回时间戳","level": 1}
+     * @return {"name":"data","type":"array","required":true,"desc":"数据data","level": 1}
+     * @return {"name":"id","type":"int","required":true,"desc":"产品ID","level": 2}
+     * @return {"name":"title","type":"char","required":true,"desc":"产品标题","level": 2}
+     * @return {"name":"image","type":"string","required":true,"desc":"图片","level": 2}
+     * @return {"name":"price","type":"int","required":true,"desc":"价格","level": 2}
+     */
+     public function getpseHoA()
+     {
+          $ProductSearHo = (new pro_m)->ProductSearHoA();
+          $this->success(__('成功'),$ProductSearHo);
      }
 }

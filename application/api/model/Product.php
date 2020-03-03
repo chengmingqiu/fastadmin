@@ -349,15 +349,8 @@ class Product extends Model
         $series_id = Db::table('be_series')->field(['id'])->order('update_time','desc')->find()['id'];
         
         $data = [
-              'pSear'=>[
-                  'count'=>$ProCount,
-                  'list' =>$ProSear,
-                  'pagination'=>['count'=>$ProCount,'current'=>$current,'pageSize'=>$pagesize]
-              ],
-              'pReco'=>[
-                  'count'=>count($ProReco),
-                  'list' =>$ProReco,
-              ],
+              'list' =>$ProSear,
+              'pagination'=>['count'=>$ProCount,'current'=>$current,'pageSize'=>$pagesize],
               'series_id' =>$series_id,
         ];
         return $data;
@@ -415,5 +408,15 @@ class Product extends Model
             $ProReco[$k]['image'] = Config('ip')  . $v['image'];
         }
         return ['list'=>$returnData,'pReco'=>$ProReco];
+    }
+
+    public function ProductSearHoA()
+    {
+        //推荐商品
+        $ProReco  = Db::table('be_product')->field(['id','name as title','image','price'])->order('update_time','desc')->limit(0,2)->select();
+        foreach ($ProReco as $k => $v) {
+            $ProReco[$k]['image'] = Config('ip')  . $v['image'];
+        }
+        return $ProReco;
     }
 }

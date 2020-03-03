@@ -57,6 +57,7 @@ Route::get('getproLiA','api/AppProduct/PorductList');
 Route::get('getproFiA','api/AppProduct/ProductFind');
 //搜索产品
 Route::get('getproSeA','api/AppProduct/ProductSear');
+Route::get('getpseHoA','api/AppProduct/getpseHoA');
 
 
 //故事接口
