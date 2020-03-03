@@ -97,9 +97,14 @@ class Series extends Model
     //系列列表
     public function SerDataList()
     {
+      $current     = isset($param['current'])     ? intval($param['current'])    : 1;
+      $pagesize = isset($param['pagesize']) ? intval($param['pagesize']): 10;
+      $where = [];
+      $count  = Db::table('be_series')->count();
       $data = Db::table('be_series')
              ->field(['id','image','title','brief','date_format(update_time,"%Y-%m-%d") as time'])
              ->order('update_time','desc')
+             ->limit(($current - 1) * $pagesize ,$pagesize)
              ->select();
       foreach ($data as $k => $v) {
         $data[$k]['story_id'] = Db::table('be_series_brand')->field(['id'])->where(['s_id'=>$v['id']])->find()['id'];
@@ -108,7 +113,8 @@ class Series extends Model
             $data[$k]['image'] = Config('ip').$image[0];
         }
       }
-      return $data;
+
+       return ['list'=>$data,'pagination'=>['count'=>$count,'current'=>$current,'pageSize'=>$pagesize]];
     }
 
     //系列分类

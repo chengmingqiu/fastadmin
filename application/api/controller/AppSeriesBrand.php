@@ -50,7 +50,7 @@ class AppSeriesBrand  extends  Api
 	}
 
     /**
-     * @title 故事详情
+     * @title 故事文章详情
      * @desc  {"0":"/getserbFiA","1":"请求方式：GET"}
      * @param {"name":"id","type":"int","required":true,"desc":"故事ID"}
      * @return {"name":"code","type":"int","required":true,"desc":"返回状态（1:成功返回，500:系统内部错误）","level": 1}
