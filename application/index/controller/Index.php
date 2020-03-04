@@ -13,8 +13,14 @@ class Index extends Frontend
 
     public function index()
     {
-        // return redirect("/admin/index");
-        return $this->view->fetch();
+        if (isset ($_SERVER['HTTP_X_WAP_PROFILE'])){
+            return $this->view->fetch('isapp');
+        }
+        if (isset ($_SERVER['HTTP_VIA']) && stristr($_SERVER['HTTP_VIA'], "wap")) {
+            return $this->view->fetch('isapp');
+        }
+        return $this->view->fetch('ispc');
+
     }
 
     public function news()
@@ -22,5 +28,4 @@ class Index extends Frontend
         $newslist = [];
         return jsonp(['newslist' => $newslist, 'new' => count($newslist), 'url' => 'https://www.fastadmin.net?ref=news']);
     }
-
 }
