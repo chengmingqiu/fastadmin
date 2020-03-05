@@ -62,7 +62,7 @@ class AppRele  extends  Api
      * @return {"name":"data","type":"array","required":true,"desc":"数据data","level": 1}
      * @return {"name":"title","type":"string","required":true,"desc":"标题","level": 2}
      * @return {"name":"time","type":"string","required":true,"desc":"时间","level": 2}
-     * @return {"name":"desc","type":"array","required":true,"desc":"内容","level": 2}
+     * @return {"name":"desc","type":"string","required":true,"desc":"内容","level": 2}
      */ 
      public function getActiA()
      {
