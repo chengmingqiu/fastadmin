@@ -67,7 +67,17 @@ class AppProduct  extends  Api
      * @return {"name":"title","type":"char","required":true,"desc":"产品标题","level": 3}
      * @return {"name":"image","type":"string","required":true,"desc":"图片","level": 3}
      * @return {"name":"price","type":"number","required":true,"desc":"价格","level": 3}
+     * @return {"name":"specs","type":"array","required":true,"desc":"商品规格详情","level": 3}
+     * @return {"name":"a-level","type":"array","required":true,"desc":"规格1","level": 4}
+     * @return {"name":"key","type":"int","required":true,"desc":"键（对应规格键）","level": 5}
+     * @return {"name":"value","type":"string","required":true,"desc":"名称","level": 5}
+     * @return {"name":"b-level","type":"array","required":true,"desc":"规格2","level": 4}
+     * @return {"name":"a-level-》key","type":"array","required":true,"desc":"a-level里的key键","level": 5}
+     * @return {"name":"goods_specs","type":"array","required":true,"desc":"内容规格","level": 3}
+     * @return {"name":"key","type":"string","required":true,"desc":"键","level": 4}
+     * @return {"name":"val","type":"string","required":true,"desc":"键","level": 4}
      */
+    
 	public function ProductFind()
 	{
 		$request = (Request::instance())->param();

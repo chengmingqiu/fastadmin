@@ -362,6 +362,29 @@ class Product extends Model
               }
         }
         $ProductFind['con_image'] = explode(',',$ProductFind['con_image']);
+
+        if(!empty($ProductFind['specs'])){
+            $specs = json_decode($ProductFind['specs'],true);
+            $Sp_array = [];
+            $SpChild_array = [];
+            $i = 1;
+            foreach ($specs as $k => $v) {
+                $Sp_array[] = [ 'key'=>$i ,'value'=>$k]; 
+                $SpChild_array[$i] = explode(',', $v);
+                $i++;
+            }
+            $ProductFind['specs']  = ['a-level'=>$Sp_array,'b-level'=>$SpChild_array];
+        }
+
+        if(!empty($ProductFind['goods_specs'])){
+            $goods_specs = json_decode($ProductFind['goods_specs'],true);
+            $GoodsSpecs = [];
+            foreach ($goods_specs as $k => $v) {
+                $GoodsSpecs[]  = ['key'=>$k,'val'=>$v];
+            }
+            $ProductFind['goods_specs'] = $GoodsSpecs;
+        }
+        
         $returnData = [
               'id' =>  $ProductFind['id'],
               'image' => $ProductFind['d_image'],
@@ -385,7 +408,9 @@ class Product extends Model
                       'type'=>'text',
                       'content' => $ProductFind['content2'],
                     ],
-              ],  
+              ],
+              'specs'       => $ProductFind['specs'],
+              'goods_specs' => $ProductFind['goods_specs'],
         ];
         $ProRecowhere['series_id'] = $ProductFind['series_id'];
         $ProRecowhere['id']        = ['<>',$ProductFind['id']];
