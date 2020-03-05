@@ -1,0 +1,43 @@
+---------------------------------------------------------------
+[ 2020-03-02T17:22:10+08:00 ] 0.0.0.0 POST localhost/admin/index/login?url=%2Fadmin%2F
+[ sql ] [ DB ] CONNECT:[ UseTime:0.036048s ] mysql:host=123.57.11.135;port=3306;dbname=bemarvelous;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `be_admin` [ RunTime:0.016934s ]
+[ sql ] [ SQL ] SELECT * FROM `be_admin` WHERE  `username` = 'admin1' LIMIT 1 [ RunTime:0.016830s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `be_admin_log` [ RunTime:0.013856s ]
+[ sql ] [ SQL ] INSERT INTO `be_admin_log` (`title` , `content` , `url` , `admin_id` , `username` , `useragent` , `ip` , `createtime`) VALUES ('登录' , '{\"url\":\"\\/admin\\/\",\"__token__\":\"3ebe544c6da1b22999a3a2b65ee9c4ee\",\"username\":\"admin1\"}' , '/admin/index/login?url=%2Fadmin%2F' , 0 , 'Unknown' , 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:73.0) Gecko/20100101 Firefox/73.0' , '0.0.0.0' , 1583140930) [ RunTime:0.016897s ]
+---------------------------------------------------------------
+[ 2020-03-02T17:22:14+08:00 ] 0.0.0.0 POST localhost/admin/index/login?url=%2Fadmin%2F
+[ sql ] [ DB ] CONNECT:[ UseTime:0.027173s ] mysql:host=123.57.11.135;port=3306;dbname=bemarvelous;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `be_admin` [ RunTime:0.017427s ]
+[ sql ] [ SQL ] SELECT * FROM `be_admin` WHERE  `username` = 'admin' LIMIT 1 [ RunTime:0.015941s ]
+[ sql ] [ SQL ] UPDATE `be_admin`  SET `logintime`=1583140934,`token`='2824564b-08ea-40ce-8ad0-5a86fbbcb323',`updatetime`=1583140934  WHERE  `id` = 1 [ RunTime:0.015749s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `be_admin_log` [ RunTime:0.014435s ]
+[ sql ] [ SQL ] INSERT INTO `be_admin_log` (`title` , `content` , `url` , `admin_id` , `username` , `useragent` , `ip` , `createtime`) VALUES ('登录' , '{\"url\":\"\\/admin\\/\",\"__token__\":\"ffded83082846681b95d7b1f968eaf33\",\"username\":\"admin\"}' , '/admin/index/login?url=%2Fadmin%2F' , 1 , 'admin' , 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:73.0) Gecko/20100101 Firefox/73.0' , '0.0.0.0' , 1583140934) [ RunTime:0.014929s ]
+---------------------------------------------------------------
+[ 2020-03-02T17:22:14+08:00 ] 0.0.0.0 GET localhost/admin/
+[ sql ] [ DB ] CONNECT:[ UseTime:0.030193s ] mysql:host=123.57.11.135;port=3306;dbname=bemarvelous;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `be_auth_group_access` [ RunTime:0.018169s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `be_auth_group_access` `aga` LEFT JOIN `be_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.019407s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `be_auth_rule` [ RunTime:0.016962s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `be_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.015850s ]
+[ sql ] [ SQL ] SELECT * FROM `be_auth_rule` WHERE  `status` = 'normal'  AND `ismenu` = 1 ORDER BY `weigh` DESC [ RunTime:0.014774s ]
+[ sql ] [ SQL ] SELECT `name`,`pid` FROM `be_auth_rule` WHERE  `status` = 'normal'  AND `ismenu` = 0  AND `name` LIKE '%/index' [ RunTime:0.013960s ]
+---------------------------------------------------------------
+[ 2020-03-02T17:22:15+08:00 ] 0.0.0.0 GET localhost/admin/rota?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.028000s ] mysql:host=123.57.11.135;port=3306;dbname=bemarvelous;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `be_auth_group_access` [ RunTime:0.016338s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `be_auth_group_access` `aga` LEFT JOIN `be_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.017865s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `be_auth_rule` [ RunTime:0.014508s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `be_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.013794s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `be_auth_rule` WHERE  `name` = 'rota' LIMIT 1 [ RunTime:0.012132s ]
+---------------------------------------------------------------
+[ 2020-03-02T17:22:15+08:00 ] 0.0.0.0 GET localhost/admin/rota/index?addtabs=1&sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1583140935244
+[ sql ] [ DB ] CONNECT:[ UseTime:0.024850s ] mysql:host=123.57.11.135;port=3306;dbname=bemarvelous;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `be_auth_group_access` [ RunTime:0.016704s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `be_auth_group_access` `aga` LEFT JOIN `be_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.016723s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `be_auth_rule` [ RunTime:0.013672s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `be_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.013613s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `be_rota` [ RunTime:0.011832s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `be_series_brand` [ RunTime:0.012321s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `be_rota` `rota` LEFT JOIN `be_series_brand` `seriesBrand` ON `rota`.`serbrand_id`=`seriesBrand`.`id` ORDER BY `rota`.`id` DESC LIMIT 1 [ RunTime:0.019636s ]
+[ sql ] [ SQL ] SELECT `rota`.`id`,`rota`.`image`,`rota`.`title`,`rota`.`serbrand_id`,`rota`.`create_time`,`rota`.`update_time`,seriesBrand.id AS seriesBrand__id,seriesBrand.title AS seriesBrand__title,seriesBrand.brief AS seriesBrand__brief,seriesBrand.image AS seriesBrand__image,seriesBrand.s_id AS seriesBrand__s_id,seriesBrand.create_time AS seriesBrand__create_time,seriesBrand.update_time AS seriesBrand__update_time,seriesBrand.l_id AS seriesBrand__l_id FROM `be_rota` `rota` LEFT JOIN `be_series_brand` `seriesBrand` ON `rota`.`serbrand_id`=`seriesBrand`.`id` ORDER BY `rota`.`id` DESC LIMIT 0,10 [ RunTime:0.012087s ]
