@@ -16,6 +16,8 @@ return [
         'app\api\controller\AppSeries',
         'app\api\controller\AppProduct',
         'app\api\controller\AppSeriesBrand',
+        'app\api\controller\AppRele',
+        
         
     ],
 ];
