@@ -153,7 +153,7 @@ class AppProduct  extends  Api
      * @return {"name":"msg","type":"string","required":true,"desc":"成功","level": 1}
      * @return {"name":"time","type":"int","required":true,"desc":"返回时间戳","level": 1}
      * @return {"name":"data","type":"array","required":true,"desc":"数据","level": 1}
-     * @return {"name":"sdesc","type":"char","required":true,"desc":"文本","level": 1}
+     * @return {"name":"sdesc","type":"char","required":true,"desc":"文本","level": 2}
      */
      public function getServiA()
      {
