@@ -69,3 +69,5 @@ Route::get('getserbFiA','api/AppSeriesBrand/SeriesBrandFind');
 
 //关于我们
 Route::get('getSeleA','api/AppRele/getSeleA');
+Route::get('getContA','api/AppRele/getContA');
+Route::get('getActiA','api/AppRele/getActiA');
