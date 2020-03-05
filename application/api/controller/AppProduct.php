@@ -62,11 +62,6 @@ class AppProduct  extends  Api
       * @return {"name":"content","type":"array","required":true,"desc":"详情数据","level": 3}
      * @return {"name":"type","type":"char","required":true,"desc":"类型","level": 4}
      * @return {"name":"content","type":"char","required":true,"desc":"内容","level": 4}
-     * @return {"name":"pReco","type":"array","required":true,"desc":"相关产品","level": 2}
-     * @return {"name":"id","type":"int","required":true,"desc":"产品ID","level": 3}
-     * @return {"name":"title","type":"char","required":true,"desc":"产品标题","level": 3}
-     * @return {"name":"image","type":"string","required":true,"desc":"图片","level": 3}
-     * @return {"name":"price","type":"number","required":true,"desc":"价格","level": 3}
      * @return {"name":"specs","type":"array","required":true,"desc":"商品规格详情","level": 3}
      * @return {"name":"a-level","type":"array","required":true,"desc":"规格1","level": 4}
      * @return {"name":"key","type":"int","required":true,"desc":"键（对应规格键）","level": 5}
@@ -76,6 +71,11 @@ class AppProduct  extends  Api
      * @return {"name":"goods_specs","type":"array","required":true,"desc":"内容规格","level": 3}
      * @return {"name":"key","type":"string","required":true,"desc":"键","level": 4}
      * @return {"name":"val","type":"string","required":true,"desc":"键","level": 4}
+     * @return {"name":"pReco","type":"array","required":true,"desc":"相关产品","level": 2}
+     * @return {"name":"id","type":"int","required":true,"desc":"产品ID","level": 3}
+     * @return {"name":"title","type":"char","required":true,"desc":"产品标题","level": 3}
+     * @return {"name":"image","type":"string","required":true,"desc":"图片","level": 3}
+     * @return {"name":"price","type":"number","required":true,"desc":"价格","level": 3}
      */
     
 	public function ProductFind()
