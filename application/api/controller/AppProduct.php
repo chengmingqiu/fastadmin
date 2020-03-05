@@ -62,15 +62,6 @@ class AppProduct  extends  Api
       * @return {"name":"content","type":"array","required":true,"desc":"详情数据","level": 3}
      * @return {"name":"type","type":"char","required":true,"desc":"类型","level": 4}
      * @return {"name":"content","type":"char","required":true,"desc":"内容","level": 4}
-     * @return {"name":"specs","type":"array","required":true,"desc":"商品规格详情","level": 3}
-     * @return {"name":"a-level","type":"array","required":true,"desc":"规格1","level": 4}
-     * @return {"name":"key","type":"int","required":true,"desc":"键（对应规格键）","level": 5}
-     * @return {"name":"value","type":"string","required":true,"desc":"名称","level": 5}
-     * @return {"name":"b-level","type":"array","required":true,"desc":"规格2","level": 4}
-     * @return {"name":"a-level-》key","type":"array","required":true,"desc":"a-level里的key键","level": 5}
-     * @return {"name":"goods_specs","type":"array","required":true,"desc":"内容规格","level": 3}
-     * @return {"name":"key","type":"string","required":true,"desc":"键","level": 4}
-     * @return {"name":"val","type":"string","required":true,"desc":"键","level": 4}
      * @return {"name":"pReco","type":"array","required":true,"desc":"相关产品","level": 2}
      * @return {"name":"id","type":"int","required":true,"desc":"产品ID","level": 3}
      * @return {"name":"title","type":"char","required":true,"desc":"产品标题","level": 3}
@@ -134,5 +125,43 @@ class AppProduct  extends  Api
      {
           $ProductSearHo = (new pro_m)->ProductSearHoA();
           $this->success(__('成功'),$ProductSearHo);
+     }
+
+     /**
+     * @title 商品规格
+     * @desc  {"0":"/getSpecsA","1":"请求方式：GET"}
+     * @param {"name":"id","type":"int","required":true,"desc":"商品ID"}
+     * @return {"name":"msg","type":"string","required":true,"desc":"成功","level": 1}
+     * @return {"name":"time","type":"int","required":true,"desc":"返回时间戳","level": 1}
+     * @return {"name":"data","type":"array","required":true,"desc":"二维数据","level": 1}
+     */
+     public function getSpecsA()
+     {
+          $request = (Request::instance())->param();
+          if(empty($request['id'])){
+               $this->error(__('失败'),'产品ID不能为空');
+          }
+          $ProductSear = (new pro_m)->getSpecsA($request['id']);
+          $this->success(__('成功'),$ProductSear);
+     }
+
+
+     /**
+     * @title 服务说明
+     * @desc  {"0":"/getServiA","1":"请求方式：GET"}
+     * @param {"name":"id","type":"int","required":true,"desc":"商品ID"}
+     * @return {"name":"msg","type":"string","required":true,"desc":"成功","level": 1}
+     * @return {"name":"time","type":"int","required":true,"desc":"返回时间戳","level": 1}
+     * @return {"name":"data","type":"array","required":true,"desc":"数据","level": 1}
+     * @return {"name":"sdesc","type":text,"required":true,"desc":"文本","level": 1}
+     */
+     public function getServiA()
+     {
+          $request = (Request::instance())->param();
+          if(empty($request['id'])){
+               $this->error(__('失败'),'产品ID不能为空');
+          }
+          $ProductSear = (new pro_m)->getServiA($request['id']);
+          $this->success(__('成功'),$ProductSear);
      }
 }

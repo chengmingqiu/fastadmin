@@ -362,28 +362,6 @@ class Product extends Model
               }
         }
         $ProductFind['con_image'] = explode(',',$ProductFind['con_image']);
-
-        if(!empty($ProductFind['specs'])){
-            $specs = json_decode($ProductFind['specs'],true);
-            $Sp_array = [];
-            $SpChild_array = [];
-            $i = 1;
-            foreach ($specs as $k => $v) {
-                $Sp_array[] = [ 'key'=>$i ,'value'=>$k]; 
-                $SpChild_array[$i] = explode(',', $v);
-                $i++;
-            }
-            $ProductFind['specs']  = ['a-level'=>$Sp_array,'b-level'=>$SpChild_array];
-        }
-
-        if(!empty($ProductFind['goods_specs'])){
-            $goods_specs = json_decode($ProductFind['goods_specs'],true);
-            $GoodsSpecs = [];
-            foreach ($goods_specs as $k => $v) {
-                $GoodsSpecs[]  = ['key'=>$k,'val'=>$v];
-            }
-            $ProductFind['goods_specs'] = $GoodsSpecs;
-        }
         
         $returnData = [
               'id' =>  $ProductFind['id'],
@@ -409,8 +387,6 @@ class Product extends Model
                       'content' => $ProductFind['content2'],
                     ],
               ],
-              'specs'       => $ProductFind['specs'],
-              'goods_specs' => $ProductFind['goods_specs'],
         ];
         $ProRecowhere['series_id'] = $ProductFind['series_id'];
         $ProRecowhere['id']        = ['<>',$ProductFind['id']];
@@ -420,7 +396,7 @@ class Product extends Model
         }
         return ['list'=>$returnData,'pReco'=>$ProReco];
     }
-
+    //推荐商品
     public function ProductSearHoA()
     {
         //推荐商品
@@ -429,5 +405,25 @@ class Product extends Model
             $ProReco[$k]['image'] = Config('ip')  . $v['image'];
         }
         return $ProReco;
+    }
+
+    //产品规格
+    public function getSpecsA($ID)
+    {
+       $SpecsData= [];
+       $SpecsA = Db::table('be_product')->field(['goods_specs'])->where(['id'=>$ID])->find()['goods_specs'];
+       if(!empty($SpecsA)){
+          $SpecsA = json_decode($SpecsA,true);
+          foreach ($SpecsA as $k => $v) {
+            $SpecsData[] = $k.':'.$v;
+          }
+       }
+       return $SpecsData;
+    }
+
+    //产品服务说明
+    public function getServiA($ID)
+    {
+      return  Db::table('be_product')->field(['ser_desc as sdesc'])->where(['id'=>$ID])->find();
     }
 }
