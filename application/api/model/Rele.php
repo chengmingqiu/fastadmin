@@ -58,4 +58,31 @@ class Rele extends Model
         }
         return $data;
     }
+
+    public function getSeleA()
+    {
+        $data = [];
+        $SeleList =  Db::table('be_rele')->field(['title','date_format(update_time,"%Y-%m-%d") as time','con1','con1_img','con2'])->order('update_time','desc')->find();
+        if(!empty($SeleList)){
+             $data = [
+                'title'  => $SeleList['title'],
+                'time'   => $SeleList['time'],
+                'cotent' =>[
+                      [
+                          'type'=>'text',
+                          'content' => $SeleList['con1'],
+                      ],
+                      [
+                          'type'=>'pic',
+                          'content' => Config('ip').$SeleList['con1_img'],
+                      ],
+                      [
+                          'type'=>'text',
+                          'content' => $SeleList['con2'],
+                      ],
+                ],
+            ];
+        }
+        return $data;
+    }
 }

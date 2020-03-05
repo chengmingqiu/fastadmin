@@ -66,3 +66,6 @@ Route::get('getpseHoA','api/AppProduct/getpseHoA');
 //故事接口
 Route::get('getserbLiA','api/AppSeriesBrand/SeriesBrandList');
 Route::get('getserbFiA','api/AppSeriesBrand/SeriesBrandFind');
+
+//关于我们
+Route::get('getSeleA','api/AppRele/getSeleA');
