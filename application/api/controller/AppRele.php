@@ -55,7 +55,7 @@ class AppRele  extends  Api
      }
 
      /**
-     * @title 联系我们
+     * @title 活动通知
      * @desc  {"0":"/getActiA","1":"请求方式：GET"}
      * @return {"name":"msg","type":"string","required":true,"desc":"成功","level": 1}
      * @return {"name":"time","type":"int","required":true,"desc":"返回时间戳","level": 1}
