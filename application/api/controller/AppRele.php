@@ -24,7 +24,7 @@ class AppRele  extends  Api
      * @return {"name":"data","type":"array","required":true,"desc":"数据data","level": 1}
      * @return {"name":"title","type":"string","required":true,"desc":"标题","level": 2}
      * @return {"name":"time","type":"string","required":true,"desc":"时间","level": 2}
-     * @return {"name":"cotent","type":"array","required":true,"desc":"内容","level": 2}
+     * @return {"name":"content","type":"array","required":true,"desc":"内容","level": 2}
      * @return {"name":"type","type":"char","required":true,"desc":"类型","level": 3}
      * @return {"name":"content","type":"text","required":true,"desc":"内容","level": 3}
      */
@@ -43,7 +43,7 @@ class AppRele  extends  Api
      * @return {"name":"data","type":"array","required":true,"desc":"数据data","level": 1}
      * @return {"name":"title","type":"string","required":true,"desc":"标题","level": 2}
      * @return {"name":"time","type":"string","required":true,"desc":"时间","level": 2}
-     * @return {"name":"cotent","type":"array","required":true,"desc":"内容","level": 2}
+     * @return {"name":"content","type":"array","required":true,"desc":"内容","level": 2}
      * @return {"name":"key","type":"char","required":true,"desc":"键名","level": 3}
      * @return {"name":"val","type":"text","required":true,"desc":"值","level": 3}
      */ 
