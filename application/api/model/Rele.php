@@ -67,7 +67,7 @@ class Rele extends Model
              $data = [
                 'title'  => $SeleList['title'],
                 'time'   => $SeleList['time'],
-                'cotent' =>[
+                'content' =>[
                       [
                           'type'=>'text',
                           'content' => $SeleList['con1'],
