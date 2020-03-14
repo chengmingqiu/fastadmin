@@ -126,7 +126,7 @@ class Series extends Model
 
     public function SerFiA($id)
     {
-       $find = Db::table('be_series')->field(['id','title','image','date_format(update_time,"%Y-%m-%d") as time','content'])->where(['id'=>$id])->find();
+       $find = Db::table('be_series')->field(['id','title','image','date_format(update_time,"%Y-%m-%d") as time','content','content1'])->where(['id'=>$id])->find();
        $find['image'] =Config('ip'). explode(',', $find['image'])[1];
        $ReturnData = [
               'id'   =>    $find['id'],
@@ -143,7 +143,7 @@ class Series extends Model
                     ],
                     [
                       'type'=>'text',
-                      'content' =>$find['content'],
+                      'content' =>$find['content1'],
                     ],
               ],
        ];
