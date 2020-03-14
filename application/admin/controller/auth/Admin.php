@@ -150,7 +150,7 @@ class Admin extends Backend
                 {
                     $dataset[] = ['uid' => $this->model->id, 'group_id' => $value];
                 }
-                model('AuthGroupAccess')->saveAll($dataset);
+                model('AuthGroupAccess')->allowField(true)->saveAll($dataset);
                 $this->success();
             }
             $this->error();
@@ -205,7 +205,7 @@ class Admin extends Backend
                 {
                     $dataset[] = ['uid' => $row->id, 'group_id' => $value];
                 }
-                model('AuthGroupAccess')->saveAll($dataset);
+                model('AuthGroupAccess')->allowField(true)->saveAll($dataset);
                 $this->success();
             }
             $this->error();
