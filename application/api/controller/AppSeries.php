@@ -23,8 +23,13 @@ class AppSeries  extends  Api
      * @return {"name":"msg","type":"string","required":true,"desc":"成功","level": 1}
      * @return {"name":"time","type":"int","required":true,"desc":"返回时间戳","level": 1}
      * @return {"name":"data","type":"array","required":true,"desc":"数据data","level": 1}
-     * @return {"name":"id","type":"int","required":true,"desc":"系列ID","level": 2}
-     * @return {"name":"name","type":"string","required":true,"desc":"系列标题","level": 2}
+     * @return {"name":"a-level","type":"array","required":true,"desc":"一级数组","level": 2}
+     * @return {"name":"key","type":"int","required":true,"desc":"系列ID","level": 3}
+     * @return {"name":"val","type":"int","required":true,"desc":"系列名称","level": 3}
+     * @return {"name":"b-level","type":"array","required":true,"desc":"二级数组","level": 2}
+     * @return {"name":"a-level-》key","type":"int","required":true,"desc":"a-level里的key键","level": 3}
+     * @return {"name":"key","type":"int","required":true,"desc":"系列ID","level": 4}
+     * @return {"name":"val","type":"int","required":true,"desc":"系列名称","level": 4}
      */
 	public function SeriesList()
 	{
