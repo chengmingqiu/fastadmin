@@ -120,8 +120,27 @@ class Series extends Model
     //系列分类
     public function SeriesListA()
     {
-      $list = Db::table('be_series')->field(['id','type as name'])->select();
-      return $list;
+      $list = Db::table('be_series')->field(['id','type as name','pid'])->select();
+      $plist=[];
+      $clist=[];
+      if(!empty($list)){
+        foreach ($list as $key => $val) {
+            if($val['pid'] == 0){
+              $plist[] = [
+                  'key'  => $val['id'],
+                  'val'  => $val['name']
+               ];
+            }
+
+            if($val['pid'] != 0){
+              $clist[$val['pid']][] = [
+                  'key'  => $val['id'],
+                  'val'  => $val['name']
+               ];
+            }
+         } 
+      }
+      return ['a-level'=>$plist,'b-level'=>$clist];
     }
 
     public function SerFiA($id)
