@@ -121,26 +121,40 @@ class Series extends Model
     public function SeriesListA()
     {
       $list = Db::table('be_series')->field(['id','type as name','pid'])->select();
+      $dgdata = $this->digui($list);
       $plist=[];
-      $clist=[];
-      if(!empty($list)){
-        foreach ($list as $key => $val) {
-            if($val['pid'] == 0){
-              $plist[] = [
-                  'key'  => $val['id'],
-                  'val'  => $val['name']
-               ];
-            }
+      $Alllist= [];
+      if(!empty($dgdata)){
+        foreach ($dgdata as $key => $val) {
+          //右侧
+          $plist[$key]['id']   = $val['id'];
+          $plist[$key]['name'] = $val['name'];
+          if(!empty($dgdata[$key]['child'])){
+             foreach ($dgdata[$key]['child'] as $k1 => $v1) {
+               $plist[$key]['rightNodes'][$k1]['id']     = $val['id'].'-'.$v1['id'];
+               $plist[$key]['rightNodes'][$k1]['name']   = $v1['name'];
+             }
+          }else{
+            $plist[$key]['rightNodes']= [];
+          }
+          //全部
+          $Alllist[$key]['id']   = $val['id'];
+          $Alllist[$key]['name'] = $val['name'];
+          if(!empty($dgdata[$key]['child'])){
+             foreach ($dgdata[$key]['child'] as $k1 => $v1) {
+               $Alllist[$key]['childNodes'][$k1]['id']     = $val['id'].'-'.$v1['id'];
+               $Alllist[$key]['childNodes'][$k1]['name']   = $v1['name'];
 
-            if($val['pid'] != 0){
-              $clist[$val['pid']][] = [
-                  'key'  => $val['id'],
-                  'val'  => $val['name']
-               ];
-            }
+             }
+          }else{
+            $Alllist[$key]['childNodes']= [];
+          }
          } 
+         $InChild = [['id'=>0,'name'=>'全部','childNodes'=>[]]];
+         $Alllist = array_merge($InChild,$Alllist);
       }
-      return ['a-level'=>$plist,'b-level'=>$clist];
+     
+      return ['Nodes'=>$plist,'allNodes'=>$Alllist];
     }
 
     public function SerFiA($id)
