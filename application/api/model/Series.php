@@ -131,7 +131,7 @@ class Series extends Model
           $plist[$key]['name'] = $val['name'];
           if(!empty($dgdata[$key]['child'])){
              foreach ($dgdata[$key]['child'] as $k1 => $v1) {
-               $plist[$key]['rightNodes'][$k1]['id']     = $val['id'].'-'.$v1['id'];
+               $plist[$key]['rightNodes'][$k1]['id']     = $v1['id'];
                $plist[$key]['rightNodes'][$k1]['name']   = $v1['name'];
              }
           }else{
@@ -142,7 +142,7 @@ class Series extends Model
           $Alllist[$key]['name'] = $val['name'];
           if(!empty($dgdata[$key]['child'])){
              foreach ($dgdata[$key]['child'] as $k1 => $v1) {
-               $Alllist[$key]['childNodes'][$k1]['id']     = $val['id'].'-'.$v1['id'];
+               $Alllist[$key]['childNodes'][$k1]['id']     = $v1['id'];
                $Alllist[$key]['childNodes'][$k1]['name']   = $v1['name'];
 
              }
