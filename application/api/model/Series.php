@@ -127,15 +127,15 @@ class Series extends Model
       if(!empty($dgdata)){
         foreach ($dgdata as $key => $val) {
           //右侧
-          $plist[$key]['id']   = $val['id'];
-          $plist[$key]['name'] = $val['name'];
+          $plist['id']   = $val['id'];
+          $plist['name'] = $val['name'];
           if(!empty($dgdata[$key]['child'])){
              foreach ($dgdata[$key]['child'] as $k1 => $v1) {
-               $plist[$key]['rightNodes'][$k1]['id']     = $v1['id'];
-               $plist[$key]['rightNodes'][$k1]['name']   = $v1['name'];
+               $plist['rightNodes'][$k1]['id']     = $v1['id'];
+               $plist['rightNodes'][$k1]['name']   = $v1['name'];
              }
           }else{
-            $plist[$key]['rightNodes']= [];
+            $plist['rightNodes']= [];
           }
           //全部
           $Alllist[$key]['id']   = $val['id'];
