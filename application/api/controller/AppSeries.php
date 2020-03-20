@@ -29,16 +29,14 @@ class AppSeries  extends  Api
      * @return {"name":"rightNodes","type":"array","required":true,"desc":"二级子级","level": 3}
      * @return {"name":"id","type":"int","required":false,"desc":"系列ID","level": 4}
      * @return {"name":"name","type":"string","required":false,"desc":"系列名称","level": 4}
+     * @return {"name":"childNodes","type":"array","required":true,"desc":"三级子级","level": 4}
      * @return {"name":"allNodes","type":"array","required":true,"desc":"全部allNodes","level": 2}
      * @return {"name":"id","type":"int","required":true,"desc":"系列ID","level": 3}
      * @return {"name":"name","type":"string","required":true,"desc":"系列名称","level": 3}
      * @return {"name":"childNodes","type":"array","required":true,"desc":"二级子级","level": 3}
      * @return {"name":"id","type":"int","required":false,"desc":"系列ID","level": 4}
      * @return {"name":"name","type":"string","required":false,"desc":"系列名称","level": 4}
-     * 
-     * 
-     * 
-     * 
+     * @return {"name":"childNodes","type":"array","required":true,"desc":"三级子级","level": 4}
      */
 	public function SeriesList()
 	{
