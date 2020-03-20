@@ -285,10 +285,7 @@ class Product extends Model
           $sort   = 'desc';
         }
         $where    = [];
-        if(isset($param['id'])  && !empty($param['id'])){
-             $where    = 'a.big_type='.$param['id'].' OR '. 'a.small_type='.$param['id'];
-        }
-
+        $where    = 'a.big_type='.$param['id'].' OR '. 'a.small_type='.$param['id'];
         $PorductCount = Db::table('be_product')
                        ->alias('a')
                        ->where($where)

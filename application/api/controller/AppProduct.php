@@ -20,7 +20,7 @@ class AppProduct  extends  Api
 	/**
      * @title 商品列表
      * @desc  {"0":"/getproLiA","1":"请求方式：GET"}
-     * @param {"name":"id","type":"int","required":false,"desc":"系列ID"}
+     * @param {"name":"id","type":"int","required":true,"desc":"系列ID"}
      * @param {"name":"current","type":"int","required":false,"desc":"分页(默认第一页)"}
      * @param {"name":"pageSize","type":"int","required":false,"desc":"展示条数（默认10条）"}
      * @param {"name":"sort","type":"int","required":false,"desc":"1(时间正序)，2（时间倒序）（默认为2）"}
@@ -40,6 +40,9 @@ class AppProduct  extends  Api
 	public function PorductList()
 	{
 		$request = (Request::instance())->param();
+          if(empty($request['id'])){
+               $this->error(__('失败'),'系列ID不能为空');
+          }
 		$PorductList = (new pro_m)->PorductListA($request);
 		$this->success(__('成功'),$PorductList);
 	}
