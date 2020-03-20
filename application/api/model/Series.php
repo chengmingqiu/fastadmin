@@ -126,23 +126,6 @@ class Series extends Model
       $Alllist= [];
       if(!empty($dgdata)){
         foreach ($dgdata as $key => $val) {
-          //右侧
-          if(isset($param['id']) && !empty($param['id'])){
-             if($param['id'] == $val['id']){
-                $plist['id']   = $val['id'];
-                $plist['name'] = $val['name'];
-                if(!empty($dgdata[$key]['child'])){
-                     foreach ($dgdata[$key]['child'] as $k1 => $v1) {
-                       $plist['rightNodes'][$k1]['id']     = $v1['id'];
-                       $plist['rightNodes'][$k1]['name']   = $v1['name'];
-                       $plist['rightNodes'][$k1]['childNodes']   = [];
-                     }
-                }else{
-                  $plist['rightNodes']= [];
-                }
-             }
-          }
-          
           //全部
           $Alllist[$key]['id']   = $val['id'];
           $Alllist[$key]['name'] = $val['name'];
@@ -160,6 +143,20 @@ class Series extends Model
          $InChild = [['id'=>0,'name'=>'全部','childNodes'=>[]]];
          $AlllistData = array_merge($InChild,$Alllist);
          //判断当前推荐模块是否为空
+         if(isset($param['id']) && !empty($param['id'])){
+            foreach ($Alllist as $k => $v) {
+                if($param['id'] == $v['id']){
+                  $plist = $v;
+                }
+                if(!empty($v['childNodes'])){
+                    foreach ($v['childNodes'] as $key => $val) {
+                        if($param['id'] == $val['id']){
+                          $plist = $v;
+                        }
+                    }
+                }
+            }
+         }
          if(empty($plist)){
             $plist = ['id'=>0,'name'=>'全部','rightNodes'=>$Alllist];
          }
