@@ -133,6 +133,8 @@ class Series extends Model
              foreach ($dgdata[$key]['child'] as $k1 => $v1) {
                $plist['rightNodes'][$k1]['id']     = $v1['id'];
                $plist['rightNodes'][$k1]['name']   = $v1['name'];
+               $plist['rightNodes'][$k1]['childNodes']   = [];
+
              }
           }else{
             $plist['rightNodes']= [];
@@ -144,7 +146,7 @@ class Series extends Model
              foreach ($dgdata[$key]['child'] as $k1 => $v1) {
                $Alllist[$key]['childNodes'][$k1]['id']     = $v1['id'];
                $Alllist[$key]['childNodes'][$k1]['name']   = $v1['name'];
-
+               $Alllist[$key]['childNodes'][$k1]['childNodes']   = [];
              }
           }else{
             $Alllist[$key]['childNodes']= [];
