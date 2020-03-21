@@ -19,6 +19,7 @@ class AppSeries  extends  Api
 	/**
      * @title 系列分类列表
      * @desc  {"0":"/getserLiA","1":"请求方式：GET"}
+     * @param {"name":"id","type":"int","required":false,"desc":"系列ID"}
      * @return {"name":"code","type":"int","required":true,"desc":"返回状态（1:成功返回，500:系统内部错误）","level": 1}
      * @return {"name":"msg","type":"string","required":true,"desc":"成功","level": 1}
      * @return {"name":"time","type":"int","required":true,"desc":"返回时间戳","level": 1}
@@ -29,21 +30,19 @@ class AppSeries  extends  Api
      * @return {"name":"rightNodes","type":"array","required":true,"desc":"二级子级","level": 3}
      * @return {"name":"id","type":"int","required":false,"desc":"系列ID","level": 4}
      * @return {"name":"name","type":"string","required":false,"desc":"系列名称","level": 4}
+     * @return {"name":"childNodes","type":"array","required":true,"desc":"三级子级","level": 4}
      * @return {"name":"allNodes","type":"array","required":true,"desc":"全部allNodes","level": 2}
      * @return {"name":"id","type":"int","required":true,"desc":"系列ID","level": 3}
      * @return {"name":"name","type":"string","required":true,"desc":"系列名称","level": 3}
      * @return {"name":"childNodes","type":"array","required":true,"desc":"二级子级","level": 3}
      * @return {"name":"id","type":"int","required":false,"desc":"系列ID","level": 4}
      * @return {"name":"name","type":"string","required":false,"desc":"系列名称","level": 4}
-     * 
-     * 
-     * 
-     * 
+     * @return {"name":"childNodes","type":"array","required":true,"desc":"三级子级","level": 4}
      */
 	public function SeriesList()
 	{
 		$request = (Request::instance())->param();
-		$SeriesList  = (new Ser_m())->SeriesListA();
+		$SeriesList  = (new Ser_m())->SeriesListA($request);
 		$this->success(__('成功'),$SeriesList);
 	}
 

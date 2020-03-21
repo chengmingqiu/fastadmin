@@ -118,7 +118,7 @@ class Series extends Model
     }
 
     //系列分类
-    public function SeriesListA()
+    public function SeriesListA($param)
     {
       $list = Db::table('be_series')->field(['id','type as name','pid'])->select();
       $dgdata = $this->digui($list);
@@ -126,17 +126,6 @@ class Series extends Model
       $Alllist= [];
       if(!empty($dgdata)){
         foreach ($dgdata as $key => $val) {
-          //右侧
-          $plist['id']   = $val['id'];
-          $plist['name'] = $val['name'];
-          if(!empty($dgdata[$key]['child'])){
-             foreach ($dgdata[$key]['child'] as $k1 => $v1) {
-               $plist['rightNodes'][$k1]['id']     = $v1['id'];
-               $plist['rightNodes'][$k1]['name']   = $v1['name'];
-             }
-          }else{
-            $plist['rightNodes']= [];
-          }
           //全部
           $Alllist[$key]['id']   = $val['id'];
           $Alllist[$key]['name'] = $val['name'];
@@ -144,17 +133,36 @@ class Series extends Model
              foreach ($dgdata[$key]['child'] as $k1 => $v1) {
                $Alllist[$key]['childNodes'][$k1]['id']     = $v1['id'];
                $Alllist[$key]['childNodes'][$k1]['name']   = $v1['name'];
-
+               $Alllist[$key]['childNodes'][$k1]['childNodes']   = [];
              }
           }else{
             $Alllist[$key]['childNodes']= [];
           }
          } 
+         //全部里添加内容
          $InChild = [['id'=>0,'name'=>'全部','childNodes'=>[]]];
-         $Alllist = array_merge($InChild,$Alllist);
+         $AlllistData = array_merge($InChild,$Alllist);
+         //判断当前推荐模块是否为空
+         if(isset($param['id']) && !empty($param['id'])){
+            foreach ($Alllist as $k => $v) {
+                if($param['id'] == $v['id']){
+                  $plist = $v;
+                }
+                if(!empty($v['childNodes'])){
+                    foreach ($v['childNodes'] as $key => $val) {
+                        if($param['id'] == $val['id']){
+                          $plist = $v;
+                        }
+                    }
+                }
+            }
+         }
+         if(empty($plist)){
+            $plist = ['id'=>0,'name'=>'全部','rightNodes'=>$Alllist];
+         }
       }
-     
-      return ['Nodes'=>$plist,'allNodes'=>$Alllist];
+      // var_dump($plist);die;
+      return ['Nodes'=>$plist,'allNodes'=>$AlllistData];
     }
 
     public function SerFiA($id)
