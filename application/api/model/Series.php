@@ -158,7 +158,7 @@ class Series extends Model
             }
          }
          if(empty($plist)){
-            $plist = ['id'=>0,'name'=>'全部','rightNodes'=>$Alllist];
+            $plist = ['id'=>0,'name'=>'全部','childNodes'=>$Alllist];
          }
       }
       // var_dump($plist);die;
